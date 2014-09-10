@@ -1,19 +1,13 @@
 $(document).ready(function () {
-    $('.intro').delay(3000).fadeOut(200, function () {
-        $(this).text("I'M A WEB DEVELOPER..").addClass("bounceIn").fadeIn(500).delay(1000).fadeOut(500, function () {
-            $(this).text('SKATEBOARDER / ADRENALINE JUNKY..').fadeIn(500).delay(2000).fadeOut(200, function () {
-            	$(this).text('I LIVE IN SAN FRANCISCO').fadeIn(500).delay(2000).fadeOut(200, function () {
-            		$(this).text('SCROLL DOWN FOR MORE!').fadeIn(500).delay(2000).fadeOut(200);
-        		});
-        	});
-        });
-    });
+    $('.intro').delay(3000).fadeOut(200);
 
     var $headerIntro = $('.intro');
 
     //open-close submenu on mobile
     $('.cd-main-nav').on('click', function (event) {
-        if ($(event.target).is('.cd-main-nav')) $(this).children('ul').toggleClass('is-visible');
+        if ($(event.target).is('.cd-main-nav')) { 
+            $(this).children('ul').toggleClass('is-visible');
+        }
     });
 
     //hide header text which are outside the viewport
@@ -45,5 +39,32 @@ $(document).ready(function () {
                 }
             }
         });
+    });
+
+    /* Having fun with some clock animation */
+    var seconds = 10;
+    var doPlay = true;
+    var loader = document.getElementById('loader'),
+        α = 0,
+        π = Math.PI,
+        t = (seconds/360 * 1000);
+
+    $(function draw() {
+      α++;
+      α %= 360;
+      var r = ( α * π / 180 ),
+         x = Math.sin( r ) * 125,
+         y = Math.cos( r ) * - 125,
+         mid = ( α > 180 ) ? 1 : 0,
+         anim = 'M 0 0 v -125 A 125 125 1 ' + mid + ' 1 ' +  x  + ' ' +  y  + ' z';
+      //[x,y].forEach(function( d ){
+      //  d = Math.round( d * 1e3 ) / 1e3;
+      //});
+     
+      loader.setAttribute( 'd', anim );
+      
+      if(doPlay){
+        setTimeout(draw, t); // Redraw
+      }
     });
 });

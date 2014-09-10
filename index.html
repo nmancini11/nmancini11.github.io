@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,400|Oswald:400,300' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/animate.css"> <!-- Resource style -->
@@ -29,8 +29,8 @@
 		</nav> <!-- cd-main-nav -->
 	</header>
 	<div class="audio-controls">
-			<img src="img/audio-white.svg" onClick="playSound()" />
-			<img src="img/mute-white.svg" onClick="muteSound()" />
+			<img src="img/audio-white.svg" />
+			<img src="img/mute-white.svg" />
 		</div>
 
 	<main id="home" class="cd-main-content">
@@ -45,14 +45,36 @@
 		<div id="about" class="cd-scrolling-bg-no-padding cd-color-2">
 			<div class="cd-container-columns">
 				<div class="cd-container-left">
+					<div class="timer">
+					  <svg class="rotate" viewbox="0 0 250 250">
+					    <path id="loader" transform="translate(125, 125)"/>
+					  </svg>
+					  <div class="dots">
+					    <span class="time deg0"></span>
+					    <span class="time deg45"></span>
+					    <span class="time deg90"></span>
+					    <span class="time deg135"></span>
+					  </div>
+					</div>
 					<p>
 						I currently work for GoPro and its a lot of fun! 
 					</p>
 					<img src="images/gopro-logo.svg" />
 				</div> <!-- cd-container -->
 				<div class="cd-container-right">
+					<div class="timer">
+					  <svg class="rotate" viewbox="0 0 250 250">
+					    <path id="loader" transform="translate(125, 125)"/>
+					  </svg>
+					  <div class="dots">
+					    <span class="time deg0"></span>
+					    <span class="time deg45"></span>
+					    <span class="time deg90"></span>
+					    <span class="time deg135"></span>
+					  </div>
+					</div>
 					<p>
-						I currently work for GoPro and its a lot of fun! 
+						I also have a lot of fun outside of work!
 					</p>
 				</div> <!-- cd-container -->
 			</div>
@@ -109,8 +131,39 @@
 		}
 		var params = { allowScriptAccess: "always" };
 		var atts = { id: "youtubeNosound" };
-		swfobject.embedSWF("http://www.youtube.com/v/AGAX9PS5Mp0&feature=plpp_play_all?enablejsapi=1&playerapiid=youtubePlayer&allowFullScreen=true&version=3&loop=1&autohide=1&showinfo=0&controls=0",
+		swfobject.embedSWF("http://www.youtube.com/v/JuwulNsJGNI&feature=plpp_play_all?enablejsapi=1&playerapiid=youtubePlayer&allowFullScreen=true&version=3&autoplay=1&loop=1&autohide=1&showinfo=0&controls=0",
 		"youtubeNosound", "100%", "100%", "8", null, null, params, atts)
+		
 	</script>
+// 	<script>
+// var seconds = 10;
+// var doPlay = true;
+// var loader = document.getElementById('loader')
+//   , α = 0
+//   , π = Math.PI
+//   , t = (seconds/360 * 1000);
+
+// (function draw() {
+//   α++;
+//   α %= 360;
+//   var r = ( α * π / 180 )
+//     , x = Math.sin( r ) * 125
+//     , y = Math.cos( r ) * - 125
+//     , mid = ( α > 180 ) ? 1 : 0
+//     , anim = 'M 0 0 v -125 A 125 125 1 ' 
+//            + mid + ' 1 ' 
+//            +  x  + ' ' 
+//            +  y  + ' z';
+//   //[x,y].forEach(function( d ){
+//   //  d = Math.round( d * 1e3 ) / 1e3;
+//   //});
+ 
+//   loader.setAttribute( 'd', anim );
+  
+//   if(doPlay){
+//     setTimeout(draw, t); // Redraw
+//   }
+// })();
+// </script>
 </body>
 </html>

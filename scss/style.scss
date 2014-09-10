@@ -1,10 +1,14 @@
 @import 'bourbon'; // http://bourbon.io/
 
+@import 'neat/neat'; // neat grid for bourbon
+
 @import '../partials/variables'; // colors, fonts etc...
 
 @import '../partials/mixins'; // custom mixins
 
 @import '../partials/layout'; // responsive grid and media queries
+
+@import '../partials/clock'; // clock styling
 
 /* -------------------------------- 
 
@@ -24,7 +28,7 @@ html * {
 body {
 	font: {
 		size: 10%;
-		family: $primary-font; // variables inside partials > _variables.scss
+		family: $header-font; // variables inside partials > _variables.scss
 	}
 	color: $color-1;
 	background-color: $color-4;
@@ -59,18 +63,24 @@ Modules - reusable parts of our design
 }
 
 .cd-container-columns {
-	width: 100%;
+	// width: 100%;
+	@include span-columns(12);
+	// max-width: 1170px;
 	margin: 0 auto;
 
 	.cd-container-left {
-		width: 40%;
-		float: left;
-		margin-left: 10%;
+		@include span-columns(6);
+		// float: left;
+		text-align: center;
+		padding: 40px 0;
+		// margin-left: 10%;
 	}
 	.cd-container-right {
-		width: 40%;
-		float: left;
-		margin-right: 10%;
+		@include span-columns(6);
+		// float: left;
+		text-align: center;
+		padding: 40px 0;
+		// margin-right: 10%;
 	}
 }
 
