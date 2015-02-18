@@ -94,8 +94,7 @@ html {
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 48.82117%;
-    margin-left: 25.58941%;
+    width: 100%;
     border-radius: 4px; }
     #social .contact-container:last-child {
       margin-right: 0; }
@@ -152,6 +151,19 @@ html {
     opacity: .5; }
     #social .social-links img:hover {
       opacity: 1; }
+  @media handheld, only screen and (min-width: 800px) {
+    #social .contact-container {
+      margin-top: 100px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 48.82117%;
+      margin-left: 25.58941%;
+      border-radius: 4px; }
+      #social .contact-container:last-child {
+        margin-right: 0; } }
 
 .fade-in-element {
   line-height: 1.5em;

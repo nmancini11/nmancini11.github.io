@@ -6,8 +6,7 @@
     margin-top: 100px;
     padding: 10px;
     background-color: rgba(0,0,0,.7);
-    @include span-columns(6);
-    @include shift(3);
+    @include span-columns(12);
     border-radius: 4px;
   }
 
@@ -79,6 +78,17 @@
 
     &:hover {
       opacity: 1;
+    }
+  }
+
+  @include MQ(M){
+    .contact-container {
+      margin-top: 100px;
+      padding: 10px;
+      background-color: rgba(0,0,0,.7);
+      @include span-columns(6);
+      @include shift(3);
+      border-radius: 4px;
     }
   }
 }
