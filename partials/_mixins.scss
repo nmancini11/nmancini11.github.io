@@ -32,3 +32,12 @@
   }
 }
 
+// font styling
+@mixin header-font {
+  font-family: $header-font;
+}
+
+// paragraph / list text
+@mixin pl-text {
+  font-family: $main-font;
+}

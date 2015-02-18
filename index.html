@@ -2,16 +2,14 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,400|Oswald:400,300' rel='stylesheet' type='text/css'>
-
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/animate.css"> <!-- Resource style -->
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-	<script src="js/modernizr.js"></script> <!-- Modernizr -->
-  	
-	<title>Alternate Fixed And Scroll Backgrounds</title>
+	<script src="js/modernizr.min.js"></script> <!-- Modernizr -->
+
+	<title>Nick Mancini</title>
 </head>
 <body>
 	<header class="cd-header">
@@ -20,150 +18,203 @@
 		<nav class="cd-main-nav">
 			<ul>
 				<!-- inser more links here -->
-				<li><a href="#home">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#resume">Resume</a></li>
-				<li><a href="#0">Social</a></li>
-				<li><a href="#0">Contact</a></li>
+				<li><a href="#home">ME</a></li>
+				<li><a href="#about">WHAT I DO</a></li>
+				<li><a href="#resume">RESUME</a></li>
+				<li><a href="#social">CONTACT</a></li>
 			</ul>
 		</nav> <!-- cd-main-nav -->
 	</header>
-	<div class="audio-controls">
-			<img src="img/audio-white.svg" />
-			<img src="img/mute-white.svg" />
-		</div>
 
 	<main id="home" class="cd-main-content">
 		<div class="cd-fixed-bg">
-			<h1 class="intro fadeInUp">HI, MY NAME'S NICK!</h1>
-			 <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
-			  <iframe id="youtubeNosound" frameborder="0" height="100%" width="100%">
-			  </iframe>
+			<h1 class="intro fadeInUp">HI, MY NAME'S NICK</h1>
+			<div id="youtubeNosound" class="video" style="position: fixed; z-index: -99; width: 100%; height: 100%;">
 			</div>
 		</div> <!-- cd-fixed-bg -->
 
-		<div id="about" class="cd-scrolling-bg-no-padding cd-color-2">
-			<div class="cd-container-columns">
+		<div class="cd-scrolling-bg-no-padding cd-color-2">
+			<div id="about" class="cd-container-columns">
+				<h3 class="animated fadeInUp">WHAT I DO</h3>
 				<div class="cd-container-left">
-					<div class="timer">
-					  <svg class="rotate" viewbox="0 0 250 250">
-					    <path id="loader" transform="translate(125, 125)"/>
-					  </svg>
-					  <div class="dots">
-					    <span class="time deg0"></span>
-					    <span class="time deg45"></span>
-					    <span class="time deg90"></span>
-					    <span class="time deg135"></span>
-					  </div>
-					</div>
-					<p>
-						I currently work for GoPro and its a lot of fun! 
-					</p>
-					<img src="images/gopro-logo.svg" />
+					<div id="95" class="clock" data-startdegree="270" data-dimension="250" data-text="9am-5pm" data-info="Work" data-width="30" data-fontsize="38" data-percent="66" data-fgcolor="#00aeef" data-bgcolor="#eee" data-animationstep="0.5"></div>
+					<a href="http://gopro.com"><img src="img/GoPro-logo.svg" /></a>
+					<h2>Sales & Technical Support</h2>
+					<ul>
+						<li>Mobile App Subject Matter Expert</li>
+						<li>Aggregates data for trending issues</li>
+						<li>Fraud Support</li>
+						<li>Sales</li>
+					</ul>
 				</div> <!-- cd-container -->
 				<div class="cd-container-right">
-					<div class="timer">
-					  <svg class="rotate" viewbox="0 0 250 250">
-					    <path id="loader" transform="translate(125, 125)"/>
-					  </svg>
-					  <div class="dots">
-					    <span class="time deg0"></span>
-					    <span class="time deg45"></span>
-					    <span class="time deg90"></span>
-					    <span class="time deg135"></span>
-					  </div>
-					</div>
-					<p>
-						I also have a lot of fun outside of work!
-					</p>
+					<div id="59" class="clock" data-startdegree="150" data-dimension="250" data-text="5pm-12ish" data-info="Life" data-width="30" data-fontsize="38" data-percent="60" data-fgcolor="#ff4242" data-bgcolor="#eee" data-animationstep="0.5"></div>
+					<a href="http://thecodery.co"><img src="img/the-codery.png" /></a>
+					<h2>Frontend Development</h2>
+					<ul>
+						<li>PSD > HTML</li>
+						<li>SASS</li>
+						<li>jQuery / JS</li>
+						<li>UX/UI</li>
+					</ul>
 				</div> <!-- cd-container -->
 			</div>
 		</div> <!-- cd-scrolling-bg -->
 
 		<div class="cd-fixed-bg">
-			<h1 class="">I live in San Francisco.</h1>
+			<!-- <h1 class="">I live in San Francisco</h1> -->
 		</div> <!-- cd-fixed-bg -->
 
-		<div id="resume" class="cd-scrolling-bg cd-color-3">
-			<div class="cd-container">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore incidunt suscipit similique, dolor corrupti cumque qui consectetur autem laborum fuga quas ipsam doloribus sequi, mollitia, repellendus sapiente repudiandae labore rerum amet culpa inventore, modi non. Quo nisi veritatis vitae nam, labore fugit. Inventore culpa iusto, officia exercitationem. Voluptates quibusdam odit odio incidunt consequatur, consectetur aspernatur optio vitae molestias, quas repellendus fugit ullam culpa, eligendi et dignissimos voluptatibus illum? Molestias aliquam nostrum quasi ipsa culpa, iusto explicabo ut error, consequuntur enim temporibus, adipisci tempora voluptate, id consequatur mollitia eveniet blanditiis. Illo quod repellendus alias? Cum rem doloremque adipisci accusantium? Saepe, necessitatibus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore incidunt suscipit similique, dolor corrupti cumque qui consectetur autem laborum fuga quas ipsam doloribus sequi, mollitia, repellendus sapiente repudiandae labore rerum amet culpa inventore, modi non. Quo nisi veritatis vitae nam, labore fugit. Inventore culpa iusto, officia exercitationem. Voluptates quibusdam odit odio incidunt consequatur, consectetur aspernatur optio vitae molestias, quas repellendus fugit ullam culpa, eligendi et dignissimos voluptatibus illum? Molestias aliquam nostrum quasi ipsa culpa, iusto explicabo ut error, consequuntur enim temporibus, adipisci tempora voluptate, id consequatur mollitia eveniet blanditiis. Illo quod repellendus alias? Cum rem doloremque adipisci accusantium? Saepe, necessitatibus!
-				</p>
-			</div> <!-- cd-container -->
-		</div> <!-- cd-scrolling-bg -->
+		<div class="cd-scrolling-bg cd-color-3">
+			<div id="resume" class="cd-container-columns">
+				<div class="skills">
+					<h4>Skills</h4>
 
-		<div class="cd-fixed-bg">
-			<h2>Lorem ipsum dolor sit amet.</h2>
-		</div> <!-- cd-fixed-bg -->
+					<div class="progress-bar-indication">
+						<span class="meter" style="width: 95%">
+							<p>HTML</p>
+						</span>
+					</div>
 
-		<div class="cd-scrolling-bg cd-color-1">
-			<div class="cd-container">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore incidunt suscipit similique, dolor corrupti cumque qui consectetur autem laborum fuga quas ipsam doloribus sequi, mollitia, repellendus sapiente repudiandae labore rerum amet culpa inventore, modi non. Quo nisi veritatis vitae nam, labore fugit. Inventore culpa iusto, officia exercitationem. Voluptates quibusdam odit odio incidunt consequatur, consectetur aspernatur optio vitae molestias, quas repellendus fugit ullam culpa, eligendi et dignissimos voluptatibus illum? Molestias aliquam nostrum quasi ipsa culpa, iusto explicabo ut error, consequuntur enim temporibus, adipisci tempora voluptate, id consequatur mollitia eveniet blanditiis. Illo quod repellendus alias? Cum rem doloremque adipisci accusantium? Saepe, necessitatibus!
-				</p>
-			</div> <!-- cd-container -->
-		</div> <!-- cd-scrolling-bg -->
+					<div class="progress-bar-indication">
+						<span class="meter" style="width: 85%">
+							<p>CSS / SASS</p>
+						</span>
+					</div>
 
-		<div class="cd-fixed-bg">
-			<h2>Let's meet up!</h2>
-		</div> <!-- cd-fixed-bg -->
-	</main> <!-- cd-main-content -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="js/wow.js"></script>
-	<script src="js/application.js"></script>
-	<script src="http://www.google.com/jsapi"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script>
-	<script type="text/javascript">
-		google.load("swfobject", "2.1");
-		function onYouTubePlayerReady(playerId) {
-			youtubePlayer = document.getElementById("youtubeNosound");
-			youtubePlayer.playVideo();
-			youtubePlayer.mute();
+					<div class="progress-bar-indication">
+						<span class="meter" style="width: 75%">
+							<p>Javascript</p>
+						</span>
+					</div>
+
+					<div class="progress-bar-indication">
+						<span class="meter" style="width: 80%">
+							<p>Git</p>
+						</span>
+					</div>
+
+					<div class="progress-bar-indication">
+						<span class="meter" style="width: 90%">
+							<p>Photoshop</p>
+						</span>
+					</div>
+
+
+					<div class="progress-bar-indication">
+						<span class="meter" style="width: 83%">
+							<p>Illustrator</p>
+						</span>
+					</div>
+
+					<div class="progress-bar-indication">
+						<span class="meter" style="width: 55%">
+							<p>Telling Jokes</p>
+						</span>
+					</div>
+
+
+					<div class="progress-bar-indication">
+						<span class="meter" style="width: 75%">
+							<p>Videography</p>
+						</span>
+					</div>
+
+				</div>
+				<div class="employment">
+					<h4>Employment</h4>
+					<div class="employer">
+						<img src="img/gopro-black-logo.svg" alt="GoPro - Sales & Technical Support">
+
+						<p>Nick handled GoPro’s front lines by handling phone calls and emails with the
+							utmost professionalism. With a background in prodcut development, Nick quickly
+							expanded his role by aggregating customer feedback for the Mobile Apps team.</p>
+						</div>
+						<div class="employer">
+							<img src="img/the-codery-black.png" alt="GoPro - Sales & Technical Support">
+							<p>Outside of GoPro Nick is actively improving his front-end development skill set
+								and has successfully launched multiple websites for Codery clients. Nick prides
+								himself on scalable design and a consistent user experience.</p>
+							</div>
+							<div class="employer">
+								<img src="img/upfront.svg" alt="GoPro - Sales & Technical Support">
+								<p>As a junior in college, Nick started UpFront: an app for restaurants aimed to
+									subvert buzzer systems and improve the waiting process. As founder, Nick helped
+									grow the company to over 15 restaurants and helped seat over 20,000 diners in
+									New York restaurants.</p>
+								</div>
+							</div>
+							<div class="oaa">
+								<h4>Activities</h4>
+								<ul>
+									<li class="icon-skydive">Skydiver</li>
+									<li class="icon-scuba">Scuba Diver</li>
+									<li class="icon-skate">Skateboarder</li>
+									<li class="icon-snow">Snowboarder</li>
+									<li class="icon-wake">Wakeboarder</li>
+									<li class="icon-surf">Surfer</li>
+									<li class="icon-quad">Quad Pilot</li>
+								</ul>
+							</div>
+						</div> <!-- cd-container -->
+					</div> <!-- cd-scrolling-bg -->
+
+					<div id="social" class="cd-fixed-bg">
+						<div id="js-fadeInElement" class="fade-in-element">
+						<div class="contact-container">
+							<form action="//formspree.io/nmancini11@gmail.com">
+								<input type="text" name="name" placeholder="Real Human">
+								<input type="email" name="_replyto" placeholder="legitperson@realness.com">
+								<textarea name="text" rows="6" cols="40"></textarea>
+								<input type="submit" class="button" value="Send It!">
+							</form>
+							<a class="social-links" href="https://www.facebook.com/nmancini11" target="_blank"><img src="img/facebook.png" alt="Facebook" /></a>
+							<a class="social-links" href="http://github.com/nmancini11/" target="_blank"><img src="img/github.png" alt="GitHub" /></a>
+							<a class="social-links" href="http://instagram.com/n_mancini" target="_blank"><img src="img/instagram.png" alt="Instagram" /></a>
+							<a class="social-links" href="https://twitter.com/Swizzolas" target="_blank"><img src="img/twitter.png" alt="Twitter" /></a>
+							<a class="social-links" href="https://www.linkedin.com/profile/public-profile-settings?trk=prof-edit-edit-public_profile" target="_blank"><img src="img/linkedin.png" alt="LinkedIn" /></a>
+							<a class="social-links" href="https://www.youtube.com/channel/UCtb_GJjvayoVVEM-XJS5rgA" target="_blank"><img src="img/youtube.png" alt="YouTube" /></a>
+						</div>
+					</div>
+					</div> <!-- cd-fixed-bg -->
+		</main> <!-- cd-main-content -->
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/min/jquery.circliful-min.js"></script>
+		<script src="js/min/waypoints.min.js"></script>
+		<script src="js/min/inview.min.js"></script>
+		<script src="js/application.js"></script>
+		<script src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript" src="http://www.youtube.com/iframe_api"></script>
+		<script type="text/javascript">
+		function onYouTubePlayerAPIReady() {
+			var vidId = 'JuwulNsJGNI';
+			var videoBox = document.getElementById('youtubeNosound');
+			videoBox.ytplayer = new YT.Player(videoBox, {
+				videoId: vidId,
+				playerVars: {
+					//controls: 0,
+					wmode:'transparent',
+					autoplay: 1,
+					loop: 1,
+					autohide:1,
+					showinfo: 0,
+					controls: 0,
+					playlist: vidId
+				}
+			});
 		}
-		function playSound() {
-			youtubePlayer = document.getElementById("youtubeNosound");
-			youtubePlayer.unMute();
-		}
-		function muteSound() {
-			youtubePlayer = document.getElementById("youtubeNosound");
-			youtubePlayer.mute();
-		}
-		var params = { allowScriptAccess: "always" };
-		var atts = { id: "youtubeNosound" };
-		swfobject.embedSWF("http://www.youtube.com/v/JuwulNsJGNI&feature=plpp_play_all?enablejsapi=1&playerapiid=youtubePlayer&allowFullScreen=true&version=3&autoplay=1&loop=1&autohide=1&showinfo=0&controls=0",
-		"youtubeNosound", "100%", "100%", "8", null, null, params, atts)
-		
-	</script>
-// 	<script>
-// var seconds = 10;
-// var doPlay = true;
-// var loader = document.getElementById('loader')
-//   , α = 0
-//   , π = Math.PI
-//   , t = (seconds/360 * 1000);
+		onYouTubePlayerAPIReady();
+		</script>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-// (function draw() {
-//   α++;
-//   α %= 360;
-//   var r = ( α * π / 180 )
-//     , x = Math.sin( r ) * 125
-//     , y = Math.cos( r ) * - 125
-//     , mid = ( α > 180 ) ? 1 : 0
-//     , anim = 'M 0 0 v -125 A 125 125 1 ' 
-//            + mid + ' 1 ' 
-//            +  x  + ' ' 
-//            +  y  + ' z';
-//   //[x,y].forEach(function( d ){
-//   //  d = Math.round( d * 1e3 ) / 1e3;
-//   //});
- 
-//   loader.setAttribute( 'd', anim );
-  
-//   if(doPlay){
-//     setTimeout(draw, t); // Redraw
-//   }
-// })();
-// </script>
-</body>
+			ga('create', 'UA-24029624-1', 'auto');
+			ga('send', 'pageview');
+
+		</script>
+	</body>
 </html>

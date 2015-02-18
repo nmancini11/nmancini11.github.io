@@ -1,0 +1,124 @@
+#social {
+  max-width: 1020px;
+  margin: 0px auto;
+
+  .contact-container {
+    margin-top: 100px;
+    padding: 10px;
+    background-color: rgba(0,0,0,.7);
+    @include span-columns(6);
+    @include shift(3);
+    border-radius: 4px;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 8px auto;
+    border: none;
+    outline: none;
+    background-color: rgba(250,250,250,.15);
+    color: #fff;
+    font-size: 16px;
+    border: 1px solid rgba(0,0,0,.2);
+
+    &:focus {
+      border: 1px solid rgba(0,174,239,.3);
+    }
+  }
+
+  textarea {
+    width: 100%;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 8px auto;
+    border: none;
+    outline: none;
+    background-color: rgba(250,250,250,.15);
+    color: #fff;
+    font-size: 16px;
+    border: 1px solid rgba(0,0,0,.2);
+
+    &:focus {
+      border: 1px solid rgba(0,174,239,.3);
+    }
+  }
+
+  .button {
+    margin-top: 10px;
+    background-color:#3d94f6;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    border:1px solid #337fed;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:arial;
+    font-size:17px;
+    padding:11px 31px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1570cd;
+  }
+  .button:hover {
+    background-color:#1e62d0;
+  }
+  .button:active {
+    position:relative;
+    top:1px;
+  }
+
+  .social-links img{
+    max-height: 75px;
+    opacity: .5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+
+.fade-in-element {
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-border-color: none !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: none !default;
+  $base-line-height: 1.5em !default;
+  $base-spacing: 1.5em !default;
+  $dark-gray: #333 !default;
+  $base-font-color: $dark-gray !default;
+
+  line-height: $base-line-height;
+
+  p {
+    color: $base-font-color;
+    line-height: $base-line-height;
+  }
+  //////////////////////////////////////////////////////////////////////////////////
+
+  @include clearfix;
+  background: $base-background-color;
+  border-radius: $base-border-radius;
+  border: 0px solid silver;
+  box-shadow: none;
+  margin-bottom: 4em;
+  padding: $base-spacing;
+  text-align: center;
+  width: 100%;
+
+}
+
+.js-fade-element-hide {
+  opacity: 0;
+}
+
+.js-fade-element-show {
+  @include transition (all 0.4s ease-in-out);
+  opacity: 1;
+}
