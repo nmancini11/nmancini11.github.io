@@ -14,7 +14,11 @@
 
 @import '../partials/social'; // social media / contact styling
 
-@import '../partials/skills'; // social media / contact styling
+@import '../partials/skills'; //  skillz dat killz / skill section styling
+
+@import '../partials/ribbon'; // ribbon styling
+
+
 
 /* --------------------------------
 
@@ -73,6 +77,19 @@ h4 {
 p, li {
 	@include pl-text;
 	font-weight: 400;
+}
+
+.intro-text {
+	margin: 0px auto;
+	margin-top: 400px;
+	text-align: center;
+
+	p {
+		font-size: 1.2rem;
+		color: #fff;
+		margin-top: 30px;
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+	}
 }
 
 /* --------------------------------
@@ -262,7 +279,7 @@ Main components
 	background-position: center center;
 	z-index: index($bg-elements, fixed-bg); // see partials > _variables.scss
 
-	h1, h2 {
+	h2 {
 		position: absolute;
 		@include center;
 		margin-top: 200px;
@@ -302,6 +319,8 @@ Main components
 		h1, h2 {
 			font-size: 48px;
 			font-weight: 300;
+			color: #fff;
+			text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
 		}
 	}
 }
@@ -456,6 +475,7 @@ Main components
 			list-style-type: none;
 			padding-left: 50px;
 			font-size: 1rem;
+			text-transform: uppercase;
 		}
 
 

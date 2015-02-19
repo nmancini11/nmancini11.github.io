@@ -147,7 +147,7 @@ html {
     position: relative;
     top: 1px; }
   #social .social-links img {
-    max-height: 75px;
+    max-height: 50px;
     opacity: .5; }
     #social .social-links img:hover {
       opacity: 1; }
@@ -163,7 +163,10 @@ html {
       margin-left: 25.58941%;
       border-radius: 4px; }
       #social .contact-container:last-child {
-        margin-right: 0; } }
+        margin-right: 0; }
+    #social .social-links img {
+      max-height: 75px;
+      opacity: .5; } }
 
 .fade-in-element {
   line-height: 1.5em;
@@ -224,6 +227,39 @@ html {
     line-height: 1.2em;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.6); }
 
+.ribbon-box {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #bbb;
+  position: relative;
+  z-index: 10000; }
+
+.ribbon-wrapper {
+  height: 150px;
+  width: 150px;
+  position: fixed;
+  right: -5px;
+  top: 55px; }
+  .ribbon-wrapper .ribbon {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #111111;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: .9rem;
+    font-weight: 800;
+    left: -5px;
+    line-height: 1.5em;
+    padding: 10px 7px;
+    position: relative;
+    text-align: center;
+    top: 35px;
+    width: 200px;
+    z-index: 10000; }
+
 /* --------------------------------
 
 Primary style
@@ -270,6 +306,16 @@ h4 {
 p, li {
   font-family: "Lato", sans-serif;
   font-weight: 400; }
+
+.intro-text {
+  margin: 0px auto;
+  margin-top: 400px;
+  text-align: center; }
+  .intro-text p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 30px;
+    text-shadow: 1px 1px 5px black; }
 
 /* --------------------------------
 
@@ -451,7 +497,7 @@ Main components
   background-repeat: no-repeat;
   background-position: center center;
   z-index: 1; }
-  .cd-fixed-bg h1, .cd-fixed-bg h2 {
+  .cd-fixed-bg h2 {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -486,7 +532,9 @@ Main components
       background-attachment: fixed; }
       .cd-fixed-bg h1, .cd-fixed-bg h2 {
         font-size: 48px;
-        font-weight: 300; } }
+        font-weight: 300;
+        color: #fff;
+        text-shadow: 1px 1px 5px black; } }
 
 .cd-scrolling-bg {
   position: relative;
@@ -606,7 +654,8 @@ Main components
     #resume .oaa li {
       list-style-type: none;
       padding-left: 50px;
-      font-size: 1rem; }
+      font-size: 1rem;
+      text-transform: uppercase; }
   @media handheld, only screen and (min-width: 668px) {
     #resume {
       min-height: 1550px; } }

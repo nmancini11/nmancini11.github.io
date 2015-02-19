@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.intro').delay(4000).fadeOut(200);
+    // $('.intro').delay(4000).fadeOut(200);
 
     /* Resize background depending on screen width*/
     function vidHeight(){
@@ -79,7 +79,7 @@ $(document).ready(function () {
         var windowInnerHeight = window.innerHeight;
         var elementTopToWindowTop = elementTopToPageTop - windowTopToPageTop;
         var elementTopToWindowBottom = windowInnerHeight - elementTopToWindowTop;
-        var distanceFromBottomToAppear = 400;
+        var distanceFromBottomToAppear = 500;
 
         if(elementTopToWindowBottom > distanceFromBottomToAppear) {
           $(element).addClass('js-fade-element-show');
