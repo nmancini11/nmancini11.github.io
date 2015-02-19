@@ -1,5 +1,8 @@
 $(document).ready(function () {
-    // $('.intro').delay(4000).fadeOut(200);
+    $('.shoutout').hide();
+    $('.intro-text').delay(6000).fadeOut(2000);
+    $('.shoutout').delay(2000).fadeIn(2000);
+
 
     /* Resize background depending on screen width*/
     function vidHeight(){

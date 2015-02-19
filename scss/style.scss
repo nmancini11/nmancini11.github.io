@@ -81,14 +81,14 @@ p, li {
 
 .intro-text {
 	margin: 0px auto;
-	margin-top: 400px;
+	margin-top: 200px;
 	text-align: center;
 
 	p {
 		font-size: 1.2rem;
 		color: #fff;
 		margin-top: 30px;
-		text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 	}
 }
 
@@ -186,6 +186,7 @@ Main components
 		width: 100%;
 		@include transform(translateY(-100%));
 
+
 		&.is-visible {
 			@include transform(translateY($header-height-S));
 		}
@@ -279,6 +280,11 @@ Main components
 	background-position: center center;
 	z-index: index($bg-elements, fixed-bg); // see partials > _variables.scss
 
+	h1 {
+		color: #fff;
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+	}
+
 	h2 {
 		position: absolute;
 		@include center;
@@ -319,8 +325,6 @@ Main components
 		h1, h2 {
 			font-size: 48px;
 			font-weight: 300;
-			color: #fff;
-			text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
 		}
 	}
 }
@@ -426,6 +430,12 @@ Main components
 #resume {
 	min-height: 1650px;
 	padding: 10px;
+
+	h3 {
+		font-size: 1rem;
+		// text-align: left;
+		float: right;
+	}
 
 	p, li{
 	color: $color-2;
