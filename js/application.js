@@ -31,8 +31,11 @@ $(document).ready(function () {
     // Animate clocks on scroll using Waypoint.js & Inview
     var inview = new Waypoint.Inview({
       element: $('.clock'),
-      entered: function() {
-        $('.clock').fadeIn(2000).circliful().addClass("animated pulse");
+      entered: function(direction) {
+        if (direction !== "up"){
+          $('.clock').fadeIn(2000).circliful().addClass("animated pulse");
+        }
+
       },
       exit: function() {
         // calling inview.destroy prevent multiple clocks from showing on the page
