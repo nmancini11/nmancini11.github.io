@@ -1,0 +1,140 @@
+@import "bourbon";
+@import "neat/neat";
+@import "base/base";
+
+@import "../partials/nav";
+@import "../partials/video";
+@import "../partials/personal-data-chart";
+
+
+// RESET
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+q {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+hr {
+  width: 100%;
+  padding: 10px 0;
+  margin: 50px 0;
+}
+
+nav {
+  @include outer-container;
+}
+
+.separator {
+  width: 100%;
+  background-color: #fff;
+  height: 1800px;
+}
+
+.container {
+  @include outer-container;
+  background-color: #fff;
+}
+
+.blog-posts {
+  @include span-columns(7);
+  margin-top: 30px;
+
+  .post-snippet {
+
+
+    .post-snippet-title {
+      span {
+        float: left;
+        @include span-columns(1.4);
+        line-height: 50px;
+        font-size: 24px;
+        color: #4A4A4A;
+      }
+
+      h3 {
+        @include span-columns(10);
+      }
+    }
+
+    .post-snippet-body {
+      height: 200px;
+
+      img {
+        @include span-columns(3);
+      }
+      p {
+        @include span-columns(9);
+        font-size: 16px;
+        line-height: 22px;
+        color: #4A4A4A;
+      }
+    }
+  }
+}
+
+.social-post {
+  height: 135px;
+}
+
+.social-posts {
+  margin-top: 30px;
+  @include span-columns(4);
+  float: right;
+
+  .social-image {
+    @include span-columns(3);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  p {
+    @include span-columns(8.5);
+    float: right;
+    height: 100px;
+    text-overflow: ellipsis;
+  }
+}
+
+.contact-form {
+  @include span-columns(4);
+}
+
+#personal-data {
+  @include span-columns(8);
+  height: 800px;
+}

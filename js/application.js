@@ -1,97 +1,65 @@
-$(document).ready(function () {
-    $('.shoutout').hide();
-    $('.intro-text').delay(6000).fadeOut(2000);
-    $('.shoutout').delay(2000).fadeIn(2000);
+$(window).resize(function() {
+  var more = document.getElementById("js-navigation-more");
+  if ($(more).length > 0) {
+    var windowWidth = $(window).width();
+    var moreLeftSideToPageLeftSide = $(more).offset().left;
+    var moreLeftSideToPageRightSide = windowWidth - moreLeftSideToPageLeftSide;
 
-
-    /* Resize background depending on screen width*/
-    function vidHeight(){
-      var winWidth = $( document ).width(),
-          vHeight = winWidth*0.57;
-          if ($(window).width() < 768){
-            vHeight = 330;
-          }
-      $('.cd-fixed-bg').css("min-height", vHeight);
-      $('.video').css("height", vHeight);
-    }
-    vidHeight();
-
-
-    $('.cd-main-nav').on('click', function(event){
-      if($(event.target).is('.cd-main-nav')){
-        $(this).children('ul').toggleClass('is-visible').slideDown(500);
-      }
-    });
-
-    $('.cd-main-nav ul li a').on('click', function(){
-      if ($(window).width() < 768){
-        $(this).closest('ul').toggleClass('is-visible').fadeOut(1000);
-      }
-    });
-
-
-
-    // Animate clocks on scroll using Waypoint.js & Inview
-    var inview = new Waypoint.Inview({
-      element: $('.clock'),
-      entered: function(direction) {
-        if (direction !== "up"){
-          $('.clock').fadeIn(2000).circliful().addClass("animated pulse");
-        }
-
-      },
-      exit: function() {
-        // calling inview.destroy prevent multiple clocks from showing on the page
-        inview.destroy();
-      },
-    });
-
-
-    /* Add Scroll To Effect */
-    $(function () {
-        $('a[href*=#]:not([href=#])').click(function () {
-            if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top-50
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
-    });
-
-    // Resize video container on resizing of Window
-    $(window).on("resize", vidHeight);
-
-    if ($(window).width() < 768){
-      $('#social').css('background-color','#000');
+    if (moreLeftSideToPageRightSide < 330) {
+      $("#js-navigation-more .submenu .submenu").removeClass("fly-out-right");
+      $("#js-navigation-more .submenu .submenu").addClass("fly-out-left");
     }
 
-
-    // *** Fade In Effect ***
-    var element = document.getElementById("js-fadeInElement");
-    $(element).addClass('js-fade-element-hide');
-
-    $(window).scroll(function() {
-      if( $("#js-fadeInElement").length > 0 ) {
-        var elementTopToPageTop = $(element).offset().top;
-        var windowTopToPageTop = $(window).scrollTop();
-        var windowInnerHeight = window.innerHeight;
-        var elementTopToWindowTop = elementTopToPageTop - windowTopToPageTop;
-        var elementTopToWindowBottom = windowInnerHeight - elementTopToWindowTop;
-        var distanceFromBottomToAppear = 500;
-
-        if(elementTopToWindowBottom > distanceFromBottomToAppear) {
-          $(element).addClass('js-fade-element-show');
-        }
-        else if(elementTopToWindowBottom < 0) {
-          $(element).removeClass('js-fade-element-show');
-          $(element).addClass('js-fade-element-hide');
-        }
-      }
-    });
-
+    if (moreLeftSideToPageRightSide > 330) {
+      $("#js-navigation-more .submenu .submenu").removeClass("fly-out-left");
+      $("#js-navigation-more .submenu .submenu").addClass("fly-out-right");
+    }
+  }
 });
+
+$(document).ready(function() {
+  var menuToggle = $("#js-mobile-menu").unbind();
+  $("#js-navigation-menu").removeClass("show");
+
+  menuToggle.on("click", function(e) {
+    e.preventDefault();
+    $("#js-navigation-menu").slideToggle(function(){
+      if($("#js-navigation-menu").is(":hidden")) {
+        $("#js-navigation-menu").removeAttr("style");
+      }
+    });
+  });
+});
+
+
+// Parallax window
+$(document).ready(function() {
+  if ($("#js-parallax-window").length) {
+    parallax();
+  }
+});
+
+$(window).scroll(function(e) {
+  if ($("#js-parallax-window").length) {
+    parallax();
+  }
+});
+
+function parallax(){
+  if( $("#js-parallax-window").length > 0 ) {
+    var plxBackground = $("#js-parallax-background");
+    var plxWindow = $("#js-parallax-window");
+
+    var plxWindowTopToPageTop = $(plxWindow).offset().top;
+    var windowTopToPageTop = $(window).scrollTop();
+    var plxWindowTopToWindowTop = plxWindowTopToPageTop - windowTopToPageTop;
+
+    var plxBackgroundTopToPageTop = $(plxBackground).offset().top;
+    var windowInnerHeight = window.innerHeight;
+    var plxBackgroundTopToWindowTop = plxBackgroundTopToPageTop - windowTopToPageTop;
+    var plxBackgroundTopToWindowBottom = windowInnerHeight - plxBackgroundTopToWindowTop;
+    var plxSpeed = 0.35;
+
+    plxBackground.css('top', - (plxWindowTopToWindowTop * plxSpeed) + 'px');
+  }
+}
