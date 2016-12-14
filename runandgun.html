@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nick Mancini</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper container">
+    <div class="logo">
+        <h1>NICKMANCINI.ME</h1>
+    </div>
+
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link"><a href="javascript:void(0)">HOME</a></li>
+        <li class="nav-link"><a href="javascript:void(0)">RESUME</a></li>
+        <li class="nav-link"><a href="javascript:void(0)">POSTS</a></li>
+        <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">SKATE DATA</a>
+          <ul class="submenu">
+            <li><a href="javascript:void(0)">Run + Gun 2016</a></li>
+            <li><a href="javascript:void(0)">Tampa Am 2016</a></li>
+            <li class="more"><a href="javascript:void(0)">Street Leage</a>
+              <ul class="submenu">
+                <li><a href="javascript:void(0)">Super Crown LA</a></li>
+                <li><a href="javascript:void(0)">Chicago</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+      <div class="container">
+        <div id="runandgun" class="runandgun">
+          <h4>RUN + GUN 2016 DATA ANALYSIS</h4>
+        </div>
+
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/min/application-min.js"></script>
+    <script src="js/min/d3.min-min.js"></script>
+    <!-- <script type="text/javascript" src="js/min/habitica-d3-min.js"></script> -->
+    <script type="text/javascript">
+      // parse date: 2016-06-24 18:57:09
+      var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
+
+      d3.csv("data/runandgun.csv")
+          .row(function(d){ return {skater:d.skater, stance:d.stance, dismounts:d.dismounts, timeBetweenTricks:d.timeBetweenTricks.split(","), tricks:d.tricks.split(" || ")  }; })
+          .get(function(error, data){
+
+            // tricks & timeBetweenTricks arrays are equal in length
+            for (var i=0; i<data.length; i++){
+              if (data[i].timeBetweenTricks.length != data[i].tricks.length) {
+                console.log(data[i].skater+" is fucked up.");
+              }
+              else {
+                console.log("every trick has a timestamp, noice!");
+              }
+            }
+
+            // define the size of the chart
+            // var height= 300;
+            // var width= document.getElementById('runandgun').offsetWidth;
+            //
+            // // get the min & max values for the domain
+            // var max = d3.max(data, function(d){ return d.value;});
+            // var minDate = d3.min(data, function(d){ return d.date });
+            // var maxDate = d3.max(data, function(d){ return d.date });
+            //
+            // // set a scale for the y-axis
+            // var y = d3.scaleLinear()
+            //             .domain([0, max])
+            //             .range([height, 0]);
+            // // set a scale for the x-axis
+            // var x = d3.scaleTime()
+            //             .domain([minDate,maxDate])
+            //             .range([0,width]);
+            //
+            // // create the axis
+            // var yAxis = d3.axisLeft(y);
+            // var xAxis = d3.axisBottom(x);
+            //
+            // // start drawing the chart (aka create the svg)
+            // var svg = d3.select(".runandgun").append("svg").attr("height","100%").attr("width","100%");
+            //
+            // // set the margin
+            // var margin = {left: 130, right: 50, top: 40, bottom: 0};
+            //
+            // var rainbow = d3.scaleSequential(d3.interpolateViridis).domain([0,5]);  // set the colour scale
+            //
+            // // great a group for the chart
+            // var chartGroup = svg.append("g")
+            //                       .attr("transform","translate("+margin.left+","+margin.top+")");
+            //
+            // var line = d3.line()
+            //             .x(function(d){ return x(d.date); })
+            //             .y(function(d){ return y(d.value); })
+            //             .curve(d3.curveBasis);
+            //
+            // data.forEach(function(d){
+            //
+            //   chartGroup.append("path")
+            //         .attr("class", "line")
+            //         .attr("d",line(d.values))
+            //         .style("stroke", rainbow(habitsByName.indexOf(d)));
+            //
+            //   chartGroup.append("text")
+            //         .attr("class", "line-label")
+            //         .attr("y",habitsByName.indexOf(d)*35)
+            //         .attr("x",-130)
+            //         .style("stroke", rainbow(habitsByName.indexOf(d)))
+            //         .text(d.key);
+            // });
+            //
+            // chartGroup.append("g").attr("class","x axis").attr("transform","translate(0,"+height+")").call(xAxis);
+            // chartGroup.append("g").attr("class","y axis").call(yAxis);
+
+      });
+    </script>
+  </body>
+</html>
