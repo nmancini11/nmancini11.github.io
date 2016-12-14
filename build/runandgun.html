@@ -17,12 +17,12 @@
     <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
-        <li class="nav-link"><a href="javascript:void(0)">HOME</a></li>
+        <li class="nav-link"><a href="/index.html">HOME</a></li>
         <li class="nav-link"><a href="javascript:void(0)">RESUME</a></li>
         <li class="nav-link"><a href="javascript:void(0)">POSTS</a></li>
         <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">SKATE DATA</a>
           <ul class="submenu">
-            <li><a href="javascript:void(0)">Run + Gun 2016</a></li>
+            <li><a href="/runandgun.html">Run + Gun 2016</a></li>
             <li><a href="javascript:void(0)">Tampa Am 2016</a></li>
             <li class="more"><a href="javascript:void(0)">Street Leage</a>
               <ul class="submenu">
@@ -69,58 +69,56 @@
             }
 
             // define the size of the chart
-            // var height= 300;
-            // var width= document.getElementById('runandgun').offsetWidth;
-            //
-            // // get the min & max values for the domain
-            // var max = d3.max(data, function(d){ return d.value;});
-            // var minDate = d3.min(data, function(d){ return d.date });
-            // var maxDate = d3.max(data, function(d){ return d.date });
-            //
-            // // set a scale for the y-axis
-            // var y = d3.scaleLinear()
-            //             .domain([0, max])
-            //             .range([height, 0]);
-            // // set a scale for the x-axis
-            // var x = d3.scaleTime()
-            //             .domain([minDate,maxDate])
-            //             .range([0,width]);
-            //
-            // // create the axis
-            // var yAxis = d3.axisLeft(y);
-            // var xAxis = d3.axisBottom(x);
-            //
-            // // start drawing the chart (aka create the svg)
-            // var svg = d3.select(".runandgun").append("svg").attr("height","100%").attr("width","100%");
-            //
-            // // set the margin
-            // var margin = {left: 130, right: 50, top: 40, bottom: 0};
-            //
-            // var rainbow = d3.scaleSequential(d3.interpolateViridis).domain([0,5]);  // set the colour scale
-            //
-            // // great a group for the chart
-            // var chartGroup = svg.append("g")
-            //                       .attr("transform","translate("+margin.left+","+margin.top+")");
-            //
-            // var line = d3.line()
-            //             .x(function(d){ return x(d.date); })
-            //             .y(function(d){ return y(d.value); })
-            //             .curve(d3.curveBasis);
-            //
-            // data.forEach(function(d){
-            //
-            //   chartGroup.append("path")
-            //         .attr("class", "line")
-            //         .attr("d",line(d.values))
-            //         .style("stroke", rainbow(habitsByName.indexOf(d)));
-            //
-            //   chartGroup.append("text")
-            //         .attr("class", "line-label")
-            //         .attr("y",habitsByName.indexOf(d)*35)
-            //         .attr("x",-130)
-            //         .style("stroke", rainbow(habitsByName.indexOf(d)))
-            //         .text(d.key);
-            // });
+            var height= 400;
+            var width= document.getElementById('runandgun').offsetWidth;
+
+            // get the min & max values for the domain
+            var max = data.length;
+            var maxTricks = d3.max(data, function(d){ return d.tricks.length });
+
+            // set a scale for the y-axis
+            var y = d3.scaleOrdinal()
+                        .domain(data)
+                        .range([height, 0]);
+            // set a scale for the x-axis
+            var x = d3.scaleLinear()
+                        .domain([0,maxTricks])
+                        .range([0,width]);
+
+            // create the axis
+            var yAxis = d3.axisLeft(y);
+            var xAxis = d3.axisBottom(x);
+
+            // start drawing the chart (aka create the svg)
+            var svg = d3.select(".runandgun").append("svg").attr("height","100%").attr("width","100%");
+
+            // set the margin
+            var margin = {left: 130, right: 50, top: 40, bottom: 0};
+
+            var rainbow = d3.scaleSequential(d3.interpolateViridis).domain([0,10]);  // set the colour scale
+
+            // great a group for the chart
+            var chartGroup = svg.append("g")
+                                  .attr("transform","translate("+margin.left+","+margin.top+")");
+
+
+            data.forEach(function(d){
+
+              chartGroup.append("rect")
+                    .attr("class", "rect")
+                    .attr("width",d.tricks.length*55)
+                    .attr("height","5")
+                    .attr("x","0")
+                    .attr("y",data.indexOf(d)*35)
+                    .attr("fill", rainbow(data.indexOf(d)));
+
+              chartGroup.append("text")
+                    .attr("class", "line-label")
+                    .attr("y",10+data.indexOf(d)*35)
+                    .attr("x",-130)
+                    .style("stroke", rainbow(data.indexOf(d)))
+                    .text(d.skater);
+            });
             //
             // chartGroup.append("g").attr("class","x axis").attr("transform","translate(0,"+height+")").call(xAxis);
             // chartGroup.append("g").attr("class","y axis").call(yAxis);

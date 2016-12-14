@@ -474,7 +474,13 @@ header.navigation {
   stroke-width: 2px; }
 
 #runandgun {
-  height: 400px; }
+  height: 400px;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%; }
+  #runandgun:last-child {
+    margin-right: 0; }
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126

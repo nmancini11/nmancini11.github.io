@@ -1,3 +1,4 @@
 #runandgun {
   height: 400px;
+  @include span-columns(8);
 }
