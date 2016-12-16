@@ -1,6 +1,16 @@
 .axis, .tick {
-  stroke: 1px;
-  color: #ddd;
+  color: #fff;
+  fill: #fff;
+
+  text {
+    font-weight: bold;
+    size: 16px;
+    font-family: 'Avenir Next';
+  }
+
+  path {
+    stroke: #ccc;
+  }
 }
 
 .line {

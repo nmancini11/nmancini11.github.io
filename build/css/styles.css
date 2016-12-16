@@ -466,20 +466,75 @@ header.navigation {
     display: none; } }
 
 .axis, .tick {
-  stroke: 1px;
-  color: #ddd; }
+  color: #fff;
+  fill: #fff; }
+  .axis text, .tick text {
+    font-weight: bold;
+    size: 16px;
+    font-family: 'Avenir Next'; }
+  .axis path, .tick path {
+    stroke: #ccc; }
 
 .line {
   fill: none;
   stroke-width: 2px; }
 
-#runandgun {
-  height: 400px;
+#mainbarchart {
+  height: 410px;
+  margin-top: 110px;
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 65.88078%; }
-  #runandgun:last-child {
+  #mainbarchart:last-child {
+    margin-right: 0; }
+  #mainbarchart .axis, #mainbarchart .tick {
+    color: #fff;
+    fill: #fff; }
+    #mainbarchart .axis line, #mainbarchart .tick line {
+      height: 20px; }
+    #mainbarchart .axis text, #mainbarchart .tick text {
+      font-weight: bold;
+      size: 16px;
+      font-family: 'Avenir Next';
+      margin-top: 10px; }
+    #mainbarchart .axis .domain, #mainbarchart .tick .domain {
+      stroke: none; }
+    #mainbarchart .axis path, #mainbarchart .tick path {
+      stroke: #ccc;
+      color: #fff; }
+
+#sidechart {
+  height: 300px;
+  margin-top: 110px;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 18.96686%; }
+  #sidechart:last-child {
+    margin-right: 0; }
+  #sidechart svg {
+    height: 100%;
+    width: 100%; }
+
+#mallgrabs {
+  height: 300px;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 10.43705%;
+  margin-top: 150px; }
+  #mallgrabs:last-child {
+    margin-right: 0; }
+
+.rundown {
+  height: 400px;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-top: 110px; }
+  .rundown:last-child {
     margin-right: 0; }
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -537,6 +592,7 @@ nav {
   height: 1800px; }
 
 .container {
+  padding: 20px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;

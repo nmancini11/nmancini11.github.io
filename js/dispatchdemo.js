@@ -1,0 +1,126 @@
+/*global d3:true */
+
+var dispatch = d3.dispatch("load", "statechange");
+
+var groups = [
+  "Under 5 Years",
+  "5 to 13 Years",
+  "14 to 17 Years",
+  "18 to 24 Years",
+  "25 to 44 Years",
+  "45 to 64 Years",
+  "65 Years and Over"
+];
+
+d3.csv("/data/runandgun.csv", type, function(error, skaters) {
+  if (error) throw error;
+  var skaterByName = d3.map();
+  skaters.forEach(function(d) { skaterByName.set(d.skater, d); });
+  dispatch.call("load", this, skaterByName);
+  dispatch.call("statechange", this, skaterByName.get("Nyjah Huston"));
+});
+
+
+
+// A drop-down menu for selecting a state; uses the "menu" namespace.
+dispatch.on("load.menu", function(skaterByName) {
+  var select = d3.select("body")
+    .append("div")
+    .append("select")
+      .on("change", function() { dispatch.call("statechange", this, skaterByName.get(this.value)); });
+
+  select.selectAll("option")
+      .data(skaterByName.values())
+    .enter().append("option")
+      .attr("value", function(d) { return d.skater; })
+      .text(function(d) { return d.skater; });
+
+  dispatch.on("statechange.menu", function(skater) {
+    select.property("value", skater.skater);
+  });
+});
+
+// A bar chart to show total population; uses the "bar" namespace.
+dispatch.on("load.bar", function(skaterByName) {
+  var margin = {top: 20, right: 20, bottom: 30, left: 40},
+      width = 80 - margin.left - margin.right,
+      height = 460 - margin.top - margin.bottom,
+      max = d3.max(skaterByName.values(), function(d) { return d.tricks.split(" || ").length; });
+
+  var y = d3.scaleLinear()
+      .domain([0, max])
+      .rangeRound([height, 0])
+      .nice();
+
+  var yAxis = d3.axisLeft(y);
+
+  var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  var rect = svg.append("rect")
+      .attr("x", 4)
+      .attr("width", width - 4)
+      .attr("y", height)
+      .attr("height", 0)
+      .style("fill", "#aaa");
+
+  dispatch.on("statechange.bar", function(d) {
+    rect.transition()
+        .attr("y", y(d.tricks.split(" || ").length))
+        .attr("height", y(0) - y(d.tricks.split(" || ").length));
+  });
+});
+
+// A pie chart to show population by age group; uses the "pie" namespace.
+dispatch.on("load.pie", function(skaterByName) {
+  var width = 880,
+      height = 460,
+      radius = Math.min(width, height) / 2;
+
+  var color = d3.scaleLinear()
+      .domain([0, d3.sum(data[2].timeBetweenTricks)+1.5)
+      .range([0,1]);
+
+  var arc = d3.arc()
+      .outerRadius(radius - 10)
+      .innerRadius(radius - 70);
+
+  var pie = d3.pie()
+      .sort(null);
+
+  var svg = d3.select("body").append("svg")
+      .attr("width", width)
+      .attr("height", height)
+    .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  var path = svg.selectAll("path")
+      .data(skaters)
+    .enter().append("path")
+      .style("fill", color)
+      .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
+
+  dispatch.on("statechange.pie", function(d) {
+    path.data(pie.value(function(g) { return d[g]; })(groups)).transition()
+        .attrTween("d", function(d) {
+          var interpolate = d3.interpolate(this._current, d);
+          this._current = interpolate(0);
+          return function(t) {
+            return arc(interpolate(t));
+          };
+        });
+  });
+});
+
+// Coerce population counts to numbers and compute total per state.
+function type(d) {
+  d.total = d3.sum(groups, function(k) { return d[k] = +d[k]; });
+  return d;
+}

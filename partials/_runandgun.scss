@@ -1,4 +1,54 @@
-#runandgun {
-  height: 400px;
+#mainbarchart {
+  height: 410px;
+  margin-top: 110px;
   @include span-columns(8);
+
+  .axis, .tick {
+    color: #fff;
+    fill: #fff;
+
+    line {
+      height: 20px;
+    }
+
+    text {
+      font-weight: bold;
+      size: 16px;
+      font-family: 'Avenir Next';
+      margin-top: 10px;
+    }
+
+    .domain {
+      stroke: none;
+    }
+
+    path {
+      stroke: #ccc;
+      color: #fff;
+    }
+  }
+}
+
+#sidechart {
+  height: 300px;
+  margin-top: 110px;
+  @include span-columns(2.5);
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+#mallgrabs {
+  height: 300px;
+  @include span-columns(1.5);
+  margin-top: 150px;
+}
+
+
+.rundown {
+  height: 400px;
+  @include span-columns(12);
+  margin-top: 110px;
 }
