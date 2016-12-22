@@ -1,6 +1,12 @@
 /*global d3:true */
 /*global console:true */
 
+
+var selectedSkater = "EvanSmith";
+var skaterIndex = [3];
+var skaterString = "Evan Smith";
+
+// D3
 function fixMiCharts(){
 
   var svgtest = d3.select("#mainbarchart").select("svg");
@@ -17,7 +23,7 @@ function fixMiCharts(){
     // tricks & timeBetweenTricks arrays are equal in length
     for (var i=0; i<data.length; i++){
       if (data[i].timeBetweenTricks.length !== data[i].tricks.length) {
-        console.log(data[i].skater+" is fucked up.");
+        console.log(data[i].skater+" is fucked up. # Timestamps: " + data[i].timeBetweenTricks.length +" # Tricks: "+ data[i].tricks.length);
       }
       else {
         console.log("every trick has a timestamp, noice!");
@@ -38,7 +44,7 @@ function fixMiCharts(){
     var maxTricks = d3.max(data, function(d){ return d.tricks.length; });
 
     // set the margin
-    var margin = {left: 130, right: 50, top: 40, bottom: 0};
+    var margin = {left: 130, right: 8, top: 10, bottom: 0};
     var rainbow = d3.scaleSequential(d3.interpolateViridis).domain([0,10]);  // set the colour scale
 
     // set a scale for the x-axis
@@ -57,11 +63,13 @@ function fixMiCharts(){
 
       barChartGroup.append("text")
           .attr("class", "line-label")
+          .attr("id", d.skater.replace(/ /g,''))
           .attr("y",8+data.indexOf(d)*35)
           .attr("x",-110)
           .transition().ease(d3.easeCubic).duration(1000).delay(150)
           .attr("x",-130)
-          .style("stroke", rainbow(data.indexOf(d)))
+          .attr("class","skater")
+          .attr("color", rainbow(data.indexOf(d)))
           .text(d.skater);
 
       barChartGroup.append("rect")
@@ -76,7 +84,9 @@ function fixMiCharts(){
 
     });
     //
-    barChartGroup.append("g").attr("class","x axis").attr("transform","translate(0,"+350+")").call(xAxis);
+    barChartGroup.append("g").attr("class","x axis").attr("transform","translate(0,"+380+")").call(xAxis);
+
+
 
 
 
@@ -96,8 +106,8 @@ function fixMiCharts(){
     // SVG path string for a given angle, we pass an object with an endAngle
     // property to the `arc` function, and it will return the corresponding string.
     var arc = d3.arc()
-    .innerRadius(dcwidth/3)
-    .outerRadius((dcwidth/3)+10)
+    .innerRadius(dcwidth/3.1)
+    .outerRadius((dcwidth/3.1)+10)
     .startAngle(0);
 
     donutChart.append("text")
@@ -113,7 +123,7 @@ function fixMiCharts(){
     .attr("y",dcheight / 2)
     .attr("x",dcwidth / 2.3)
     .style("font-size", "36px")
-    .text(Math.round(d3.sum(data[2].timeBetweenTricks)+1.5));
+    .text(Math.round(d3.sum(data[skaterIndex].timeBetweenTricks)+1.5));
 
     // Add the background arc, from 0 to 100% (tau).
     g.append("path")
@@ -123,17 +133,37 @@ function fixMiCharts(){
 
     // Add the foreground arc in orange, currently showing 12.7%.
     var foreground = g.append("path")
-    .datum({endAngle: 0.527 * tau})
     .style("fill", "#44bf70")
+    .datum({endAngle: 0 })
     .attr("d", arc);
+
 
     // Every so often, start a transition to a new random angle. The attrTween
     // definition is encapsulated in a separate function (a closure) below.
-    d3.interval(function() {
+
+
+    d3.select("#mainbarchart text").on("click", function(){
+      if (selectedSkater === this.id) {
+        // do nothing
+        console.log("fuck");
+      } else {
+        // select the Global set skater and set the class
+        selectedSkater = this.id;
+        // get index of selected skater
+        skaterString = selectedSkater.split(/(?=[A-Z])/).join(" ");
+        skaterIndex = data.map(function(x) {return x.skater; }).indexOf(skaterString);
+        // remove selected class
+        $("#mainbarchart").find(".selected").removeClass("selected");
+        // apply new class to select skater
+        $(this).addClass("selected");
+        console.log(selectedSkater.split(/(?=[A-Z])/).join(" ")+" is currently selected");
+        console.log("time between tricks: "+d3.sum(data[skaterIndex].timeBetweenTricks));
+      }
+
       foreground.transition()
       .duration(750)
-      .attrTween("d", arcTween(Math.random() * tau));
-    }, 1500);
+      .attrTween("d", arcTween(Math.round((d3.sum(data[skaterIndex].timeBetweenTricks)+1.5)/9.549296586)));
+    });
 
     // Returns a tween for a transition’s "d" attribute, transitioning any selected
     // arcs from their current angle to the specified new angle.
@@ -184,8 +214,31 @@ function fixMiCharts(){
             };
           };
         }
+
   });
 }
 
 d3.select(window).on("resize",fixMiCharts);
 fixMiCharts();
+
+
+// $(function() {
+//   $("#mainbarchart text").on("click", function(){
+//     if (selectedSkater == this.id) {
+//       // do nothing
+//       console.log("fuck");
+//     } else {
+//       // select the Global set skater and set the class
+//       selectedSkater = this.id;
+//       // get index of selected skater
+//       skaterString = selectedSkater.split(/(?=[A-Z])/).join(" ");
+//       skaterIndex = data.map(function(x) {return x.skater; }).indexOf(skaterString);
+//       // remove selected class
+//       $("#mainbarchart").find(".selected").removeClass("selected");
+//       // apply new class to select skater
+//       $(this).addClass("selected");
+//       console.log(selectedSkater.split(/(?=[A-Z])/).join(" ")+" is currently selected");
+//       console.log("time between tricks: "+d3.sum(data[skaterIndex].timeBetweenTricks));
+//     }
+//   });
+// });

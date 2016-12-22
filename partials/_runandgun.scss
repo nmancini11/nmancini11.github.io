@@ -1,7 +1,19 @@
+.page-title {
+  margin-top: 100px;
+  @include span-columns(12);
+}
+text {
+  stroke: none;
+}
+
+.selected {
+  font-weight: 600;
+}
+
 #mainbarchart {
   height: 410px;
-  margin-top: 110px;
-  @include span-columns(8);
+  margin-top: 0px;
+  @include span-columns(7);
 
   .axis, .tick {
     color: #fff;
@@ -31,8 +43,7 @@
 
 #sidechart {
   height: 300px;
-  margin-top: 110px;
-  @include span-columns(2.5);
+  @include span-columns(3);
 
   svg {
     height: 100%;
@@ -42,13 +53,27 @@
 
 #mallgrabs {
   height: 300px;
-  @include span-columns(1.5);
-  margin-top: 150px;
+  @include span-columns(2);
+  margin-top: 60px;
+
+  svg {
+    margin-left: 20px;
+  }
+
+  #dismount {
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 24px;
+    line-height: 36px;
+  }
 }
 
 
 .rundown {
   height: 400px;
   @include span-columns(12);
-  margin-top: 110px;
 }
