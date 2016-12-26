@@ -2,17 +2,15 @@
 /*global console:true */
 
 var dispatch = d3.dispatch("load", "statechange");
+var selectedSkater = "Paul Rodgriguez";
 
 d3.csv("/data/runandgun.csv", function(error, skaters) {
   if (error) { throw error; }
   var skaterByName = d3.map();
   skaters.forEach(function(d) { skaterByName.set(d.skater, d); });
   dispatch.call("load", this, skaterByName);
-  dispatch.call("statechange", this, skaterByName.get("Nyjah Huston"));
-  console.log(skaters);
+  dispatch.call("statechange", this, skaterByName.get("Paul Rodriguez"));
 });
-
-
 
 // A drop-down menu for selecting a state; uses the "menu" namespace.
 dispatch.on("load.menu", function(skaterByName) {
@@ -27,8 +25,10 @@ dispatch.on("load.menu", function(skaterByName) {
       .attr("value", function(d) { return d.skater; })
       .text(function(d) { return d.skater; });
 
-  dispatch.on("statechange.menu", function(skater) {
-    select.property("value", skater.skater);
+  dispatch.on("statechange.menu", function(d) {
+    select.property("value", d.skater);
+    selectedSkater = d.skater;
+    console.log(selectedSkater)
   });
 });
 
@@ -43,9 +43,9 @@ dispatch.on("load.dismounts", function(){
 
 // A bar chart to show total population; uses the "bar" namespace.
 dispatch.on("load.bar", function(skaterByName) {
-  var margin = {top: 20, right: 20, bottom: 30, left: 40},
+  var margin = {top: 0, right: 20, bottom: 30, left: 130},
       width = document.getElementById('mainbarchart').offsetWidth - margin.left - margin.right,
-      height = 460 - margin.top - margin.bottom,
+      height = 320 - margin.top - margin.bottom,
       max = d3.max(skaterByName.values(), function(d) { return d.tricks.split(" || ").length; });
 
   var x = d3.scaleLinear()
@@ -62,21 +62,123 @@ dispatch.on("load.bar", function(skaterByName) {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   svg.append("g")
-      .attr("class", "y axis")
+      .attr("class", "x axis")
+      .attr("transform", "translate("+0+"," + 300 + ")")
       .call(xAxis);
 
-  var rect = svg.append("rect")
-      .attr("x", 0)
-      .attr("width", width)
-      .attr("y", -5)
-      .attr("height", 5)
-      .style("fill", "#aaa");
+  var iterator = 0;
+  for (var key in skaterByName) {
+    // skip loop if the property is from prototype
+    if(!skaterByName.hasOwnProperty(key)) { continue; }
+
+    iterator++;
+    var obj = skaterByName[key];
+
+    svg.append("rect")
+        .attr("x", 0)
+        .attr("width", x(obj.tricks.split(" || ").length))
+        .attr("y", iterator*25)
+        .attr("height", 5)
+        .attr("class", obj.skater.replace(/ +/g, ""))
+        .style("fill", "#aaa");
+
+    svg.append("text")
+          .attr("class", "skater")
+          .attr("class", obj.skater.replace(/ +/g, ""))
+          .attr("y", (iterator*25)+7)
+          .attr("x", -(margin.left))
+          .style("stroke", "green", "text-align","center")
+          .text(obj.skater);
+  }
 
   dispatch.on("statechange.bar", function(d) {
-    rect.transition()
-        .attr("x", 0)
-        .attr("width", x(d.tricks.split(" || ").length) - x(0));
+    svg.selectAll("rect").transition()
+        .duration(750)
+        .style("fill","#aaa")
+
+    svg.selectAll("text").transition()
+        .duration(750)
+        .style("fill","#333")
+        .style("font-weight", "normal");
+
+    svg.select("rect."+d.skater.replace(/ +/g, "")).transition()
+        .duration(750)
+        .style("fill", "#44bf70");
+
+    svg.select("text."+d.skater.replace(/ +/g, "")).transition()
+        .duration(750)
+        .style("font-weight", "bold")
+        .style("fill", "#44bf70");
+
   });
+});
+
+dispatch.on("load.rundown", function(skaterByName) {
+  var margin = {top: 70, right: 10, bottom: 70, left: 10},
+      width = document.getElementById('rundown').offsetWidth - margin.left - margin.right,
+      height = 320 - margin.top - margin.bottom,
+      max = 60;
+
+  var x = d3.scaleLinear()
+      .domain([0, max])
+      .rangeRound([0, width])
+      .nice();
+
+  var xAxis = d3.axisBottom(x).ticks(0);
+
+  var svg = d3.select(".rundown").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate("+0+"," + 20 + ")")
+      .style("fill","#44bf70")
+      .call(xAxis);
+
+  dispatch.on("statechange.rundown", function(d){
+    svg.selectAll("circle").remove();
+    svg.selectAll("text").remove();
+    var runDuration = d.timeBetweenTricks.split(",");
+    var runProgress = 1.5;
+    var runTricks = d.tricks.split(" || ");
+
+    for (var i=0; i < runDuration.length; i++){
+      runProgress+=parseInt(runDuration[i])
+      console.log(runDuration[i]);
+
+      var y = 20;
+
+      if(Math.abs(i % 2)==1){
+        y = 50;
+      } else {
+        y = 10;
+      }
+
+
+      svg.append("circle")
+          .style("stroke","#ddd")
+          .style("fill","#ffffff" )
+          .transition()
+          .duration(750)
+          .delay(150)
+          .attr("cx", x(runProgress))
+          .attr("cy", "23")
+          .attr("r", "8");
+
+      svg.append("text")
+        .attr("x", x(runProgress)-50)
+        .transition()
+        .duration(750)
+        .delay(150)
+        .attr("y", y)
+        .text(runTricks[i])
+        .style("max-width","100px");
+      }
+  });
+
 });
 
 //**************************************************************//
@@ -90,7 +192,7 @@ dispatch.on("load.pie", function() {
   var donutChart = d3.select("#sidechart").append("svg"),
   dcwidth = document.getElementById('sidechart').offsetWidth,
   dcheight = document.getElementById('sidechart').offsetHeight,
-  g = donutChart.append("g").attr("transform", "translate(" + dcwidth / 1.9 + "," + dcheight / 2 + ")");
+  g = donutChart.append("g").attr("transform", "translate(" + dcwidth / 1.9 + "," + dcheight / 3 + ")");
 
 
   // An arc function with all values bound except the endAngle. So, to compute an
@@ -103,12 +205,10 @@ dispatch.on("load.pie", function() {
 
   donutChart.append("text")
   .attr("class", "line-label")
-  .attr("y",dcheight / 1.78)
+  .attr("y",dcheight / 2.38)
   .attr("x",dcwidth / 2.53)
   .style("stroke", "green", "text-align","center")
   .text("seconds");
-
-
 
   // Add the background arc, from 0 to 100% (tau).
   g.append("path")
@@ -133,7 +233,7 @@ dispatch.on("load.pie", function() {
 
       donutChart.append("text")
             .attr("class", "line-label second")
-            .attr("y",dcheight / 2)
+            .attr("y",dcheight / 2.9)
             .attr("x",dcwidth / 2.3)
             .style("font-size", "36px")
             .text(Math.round(arcyArc));
@@ -141,8 +241,8 @@ dispatch.on("load.pie", function() {
       foreground.transition().duration(1500).ease(d3.easeExpInOut)
                     .attrTween("d", cirDegrees);
 
-      console.log(d.skater+" run duration: "+arcyArc);
-      console.log("degrees: "+arcTween((arcyArc+1.5)/tau));
+      // console.log(d.skater+" run duration: "+arcyArc);
+      // console.log("degrees: "+arcTween((arcyArc+1.5)/tau));
   });
 
   // Returns a tween for a transition’s "d" attribute, transitioning any selected
