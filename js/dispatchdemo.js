@@ -15,7 +15,7 @@ d3.csv("/data/runandgun.csv", function(error, skaters) {
 // A drop-down menu for selecting a state; uses the "menu" namespace.
 dispatch.on("load.menu", function(skaterByName) {
   var select = d3.select("#mainbarchart")
-    .append("div")
+    .append("div").attr("class","select-style")
     .append("select")
       .on("change", function() { dispatch.call("statechange", this, skaterByName.get(this.value)); });
 
@@ -28,7 +28,6 @@ dispatch.on("load.menu", function(skaterByName) {
   dispatch.on("statechange.menu", function(d) {
     select.property("value", d.skater);
     selectedSkater = d.skater;
-    console.log(selectedSkater)
   });
 });
 
@@ -43,9 +42,9 @@ dispatch.on("load.dismounts", function(){
 
 // A bar chart to show total population; uses the "bar" namespace.
 dispatch.on("load.bar", function(skaterByName) {
-  var margin = {top: 0, right: 20, bottom: 30, left: 130},
+  var margin = {top: 0, right: 40, bottom: 30, left: 130},
       width = document.getElementById('mainbarchart').offsetWidth - margin.left - margin.right,
-      height = 320 - margin.top - margin.bottom,
+      height = 375 - margin.top - margin.bottom,
       max = d3.max(skaterByName.values(), function(d) { return d.tricks.split(" || ").length; });
 
   var x = d3.scaleLinear()
@@ -63,7 +62,7 @@ dispatch.on("load.bar", function(skaterByName) {
 
   svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate("+0+"," + 300 + ")")
+      .attr("transform", "translate("+0+"," + 355 + ")")
       .call(xAxis);
 
   var iterator = 0;
@@ -75,49 +74,133 @@ dispatch.on("load.bar", function(skaterByName) {
     var obj = skaterByName[key];
 
     svg.append("rect")
-        .attr("x", 0)
         .attr("width", x(obj.tricks.split(" || ").length))
-        .attr("y", iterator*25)
+        .attr("y", iterator*30)
         .attr("height", 5)
         .attr("class", obj.skater.replace(/ +/g, ""))
+        .transition().ease(d3.easeCubic).duration(1000).delay(150)
         .style("fill", "#aaa");
 
     svg.append("text")
           .attr("class", "skater")
           .attr("class", obj.skater.replace(/ +/g, ""))
-          .attr("y", (iterator*25)+7)
+          .attr("y", (iterator*30)+7)
           .attr("x", -(margin.left))
           .style("stroke", "green", "text-align","center")
           .text(obj.skater);
   }
 
   dispatch.on("statechange.bar", function(d) {
-    svg.selectAll("rect").transition()
-        .duration(750)
-        .style("fill","#aaa")
+    svg.selectAll("rect")
+        .style("fill","#aaa");
 
-    svg.selectAll("text").transition()
-        .duration(750)
+    svg.selectAll("text")
         .style("fill","#333")
+        .transition()
+        .duration(750)
         .style("font-weight", "normal");
 
     svg.select("rect."+d.skater.replace(/ +/g, "")).transition()
         .duration(750)
         .style("fill", "#44bf70");
 
-    svg.select("text."+d.skater.replace(/ +/g, "")).transition()
+    svg.select("text."+d.skater.replace(/ +/g, ""))
+        .style("fill", "#44bf70")
+        .transition()
         .duration(750)
-        .style("font-weight", "bold")
-        .style("fill", "#44bf70");
+        .style("font-weight", "bold");
 
+  });
+});
+
+dispatch.on("load.trickstance", function(skaterByName){
+  // load the bar chart
+  var margin = {top: 0, right: 20, bottom: 30, left: 75},
+      width = document.getElementById('trickstance').offsetWidth - margin.left - margin.right,
+      height = 170 - margin.top - margin.bottom,
+      max = 8;
+
+  var x = d3.scaleLinear()
+      .domain([0, max])
+      .rangeRound([0, width])
+      .nice();
+
+  var xAxis = d3.axisBottom(x);
+
+  var svg = d3.select("#trickstance").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + "-7" + ")");
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate("+0+"," + 145 + ")")
+      .call(xAxis);
+
+  dispatch.on("statechange.trickstance", function(d){
+    svg.selectAll("rect").remove();
+
+    var trickArray = d.tricks.split(" || "),
+    trickObj = { "regular":0, "fakie":0, "nollie":0, "switch": 0 };
+
+    for (var i = 0; i<trickArray.length; i++){
+      var trick = trickArray[i].split(" ");
+      if (trick[0] === "Switch"){
+        trickObj.switch++;
+      } else if (trick[0] === "Nollie") {
+        trickObj.nollie++;
+      } else if (trick[0] === "Fakie") {
+        trickObj.fakie++;
+      } else {
+        trickObj.regular++;
+      }
+    }
+
+    // find the most number of tricks / stance the apply the max
+    // var arr = Object.keys( trickObj ).map(function ( key ) { return trickObj[key]; });
+    // max = Math.max.apply( null, arr );
+    // console.log(max);
+    //
+    // x = d3.scaleLinear()
+    //     .domain([0, max])
+    //     .rangeRound([0, width])
+    //     .nice();
+    //
+    // xAxis = d3.axisBottom(x).ticks(0);
+
+    var iterator = 0;
+    for (var key in trickObj) {
+      // skip loop if the property is from prototype
+      if(!trickObj.hasOwnProperty(key)) { continue; }
+
+      iterator++;
+      var obj = trickObj[key];
+
+      svg.append("rect")
+          .attr("y", iterator*30)
+          .style("fill", "#aaa")
+          .transition().ease(d3.easeCubic).duration(1000).delay(150)
+          .attr("width", x(obj))
+          .attr("height", 5);
+
+      svg.append("text")
+            .attr("y", (iterator*30)+7)
+            .attr("x", -(margin.left))
+            .style("text-transform", "capitalize")
+            .style("font-weight", "normal")
+            .style("font-size", "16px")
+            .style("line-height", "24px")
+            .text(key);
+    }
   });
 });
 
 dispatch.on("load.rundown", function(skaterByName) {
   var margin = {top: 70, right: 10, bottom: 70, left: 10},
       width = document.getElementById('rundown').offsetWidth - margin.left - margin.right,
-      height = 320 - margin.top - margin.bottom,
-      max = 60;
+      height = 70 - margin.top - margin.bottom,
+      max = 71;
 
   var x = d3.scaleLinear()
       .domain([0, max])
@@ -130,13 +213,7 @@ dispatch.on("load.rundown", function(skaterByName) {
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate("+0+"," + 20 + ")")
-      .style("fill","#44bf70")
-      .call(xAxis);
+      .attr("transform", "translate(" + margin.left + "," + 10 + ")");
 
   dispatch.on("statechange.rundown", function(d){
     svg.selectAll("circle").remove();
@@ -144,19 +221,33 @@ dispatch.on("load.rundown", function(skaterByName) {
     var runDuration = d.timeBetweenTricks.split(",");
     var runProgress = 1.5;
     var runTricks = d.tricks.split(" || ");
+    max = d3.sum(d.timeBetweenTricks.split(","));
+    console.log(max);
+
+    x = d3.scaleLinear()
+        .domain([0, max])
+        .rangeRound([0, width])
+        .nice();
+
+    xAxis = d3.axisBottom(x).ticks(0);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate("+0+"," + 20 + ")")
+        .style("fill","#44bf70")
+        .call(xAxis);
 
     for (var i=0; i < runDuration.length; i++){
-      runProgress+=parseInt(runDuration[i])
-      console.log(runDuration[i]);
+      runProgress+=parseInt(runDuration[i]);
 
       var y = 20;
 
-      if(Math.abs(i % 2)==1){
+      // if the i ODD or EVEN
+      if(Math.abs(i % 2)===1){
         y = 50;
       } else {
-        y = 10;
+        y = 5;
       }
-
 
       svg.append("circle")
           .style("stroke","#ddd")
@@ -168,15 +259,18 @@ dispatch.on("load.rundown", function(skaterByName) {
           .attr("cy", "23")
           .attr("r", "8");
 
-      svg.append("text")
-        .attr("x", x(runProgress)-50)
+      svg.append("text").append("tspan")
+        .attr("x", x(runProgress)-15)
+        .attr("y", y)
+        .style("opacity","0")
         .transition()
         .duration(750)
         .delay(150)
-        .attr("y", y)
+        .style("opacity","1")
         .text(runTricks[i])
-        .style("max-width","100px");
+        .attr("class","rundownTrick");
       }
+
   });
 
 });
@@ -192,7 +286,7 @@ dispatch.on("load.pie", function() {
   var donutChart = d3.select("#sidechart").append("svg"),
   dcwidth = document.getElementById('sidechart').offsetWidth,
   dcheight = document.getElementById('sidechart').offsetHeight,
-  g = donutChart.append("g").attr("transform", "translate(" + dcwidth / 1.9 + "," + dcheight / 3 + ")");
+  g = donutChart.append("g").attr("transform", "translate(" + dcwidth / 1.9 + "," + dcheight / 2 + ")");
 
 
   // An arc function with all values bound except the endAngle. So, to compute an
@@ -205,8 +299,8 @@ dispatch.on("load.pie", function() {
 
   donutChart.append("text")
   .attr("class", "line-label")
-  .attr("y",dcheight / 2.38)
-  .attr("x",dcwidth / 2.53)
+  .attr("y",dcheight / 1.68)
+  .attr("x",dcwidth / 2.43)
   .style("stroke", "green", "text-align","center")
   .text("seconds");
 
@@ -233,8 +327,8 @@ dispatch.on("load.pie", function() {
 
       donutChart.append("text")
             .attr("class", "line-label second")
-            .attr("y",dcheight / 2.9)
-            .attr("x",dcwidth / 2.3)
+            .attr("y",dcheight / 1.9)
+            .attr("x",dcwidth / 2.25)
             .style("font-size", "36px")
             .text(Math.round(arcyArc));
 

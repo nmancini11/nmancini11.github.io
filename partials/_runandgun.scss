@@ -15,12 +15,6 @@ text {
   margin-top: 0px;
   @include span-columns(7);
 
-  select {
-    @include span-columns(3);
-    border: none;
-    background: none;
-  }
-
   .axis, .tick {
     color: #fff;
     fill: #fff;
@@ -48,8 +42,8 @@ text {
 }
 
 #sidechart {
-  height: 300px;
-  @include span-columns(3);
+  height: 200px;
+  @include span-columns(5.8);
 
   svg {
     height: 100%;
@@ -58,8 +52,9 @@ text {
 }
 
 #mallgrabs {
-  height: 300px;
-  @include span-columns(2);
+  height: 200px;
+  padding: 20px;
+  @include span-columns(5.8);
 
   svg {
     margin-left: 20px;
@@ -82,5 +77,73 @@ text {
 
 .rundown {
   height: 400px;
+  margin-top: -25px;
   @include span-columns(12);
+
+  .rundownTrick {
+    font-size: 14px;
+  }
+}
+
+.select-style {
+    border: 1px solid #ccc;
+    width: 200px;
+    border-radius: 3px;
+    overflow: hidden;
+    height: 34px;
+    padding: 5px 0px;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    // background-image: none;
+    // -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+.sidecontainer {
+  height: 410px;
+  @include span-columns(5);
+}
+
+.trickStance {
+  @include span-columns(12);
+
+  h3 {
+    font-family: AvenirNext-DemiBold;
+    font-size: 22px;
+    color: #4A4A4A;
+  }
+
+  .axis, .tick {
+    color: #fff;
+    fill: #fff;
+
+    line {
+      height: 20px;
+    }
+
+    text {
+      font-weight: normal;
+      size: 16px;
+      font-family: 'Avenir Next';
+      margin-top: 10px;
+    }
+
+    .domain {
+      stroke: none;
+    }
+
+    path {
+      stroke: #ccc;
+      color: #fff;
+    }
+  }
 }
