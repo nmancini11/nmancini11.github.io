@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nick Mancini</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+		<header class="navigation" role="banner">
+		  <div class="navigation-wrapper container">
+		    <div class="logo">
+		        <h1><a href="/index.html">NICKMANCINI.ME</a></h1>
+		    </div>
+
+		    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+		    <nav role="navigation">
+		      <ul id="js-navigation-menu" class="navigation-menu show">
+		        <li class="nav-link"><a href="/index.html">HOME</a></li>
+		        <!-- <li class="nav-link"><a href="javascript:void(0)">RESUME</a></li>
+		        <li class="nav-link"><a href="javascript:void(0)">POSTS</a></li> -->
+		        <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">SKATE DATA</a>
+		          <ul class="submenu">
+		            <!-- <li><a href="/runandgun.html">Run + Gun 2016</a></li> -->
+                <li><a href="/skatedata.html">Intro</a></li>
+		            <li><a href="/runandgun2016.html">Run + Gun 2016</a></li>
+                <!-- <li><a href="/runandgun2015.html">Run + Gun 2015</a></li> -->
+		            <!-- <li class="more"><a href="javascript:void(0)">Street Leage</a>
+		              <ul class="submenu">
+		                <li><a href="javascript:void(0)">Super Crown LA</a></li>
+		                <li><a href="javascript:void(0)">Chicago</a></li>
+		              </ul>
+		            </li> -->
+		          </ul>
+		        </li>
+		      </ul>
+		    </nav>
+		  </div>
+		</header>
+
+    <div class="page-wrap">
+    <div class="banner">
+      <div class="container">
+          <img class="expand" src="images/expand.png" alt="expand">
+      </div>
+
+      <div class="mobile-banner">
+        <div id="js-parallax-window" class="parallax-window">
+          <div class="parallax-static-content">
+            <b>Thanks for stopping by</b>
+          </div>
+          <div id="js-parallax-background" class="parallax-background"></div>
+        </div>
+      </div>
+
+      <div class="video-background">
+        <div class="video-foreground">
+          <iframe src="https://www.youtube.com/embed/JuwulNsJGNI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <section class="separator">
+      <div class="container">
+
+        <div class="blog-posts">
+          <!-- POST SNIPPET -->
+          <h4>LATEST</h4>
+          <div class="post-snippet">
+              <div class="post-snippet-title">
+                <span>1/17</span><h3>Run + Gun Data Analyis</h3>
+              </div>
+              <div class="post-snippet-body">
+                <img src="images/RUN+GUN.png" alt="Run + Gun">
+                <p>For the last three years, The Berrics has hosted a 60 second contest known as Run + Gun. Each skater gets the whole park to themselves for 24 hours to come up with the best 60 secnd run...</p>
+              </div>
+              <div class="post-button">
+                  <a class="button" href="/runandgun2016.html">Check it out</a>
+              </div>
+          </div>
+
+          <!-- POST SNIPPET -->
+          <div class="post-snippet">
+            <div class="post-snippet-title">
+              <span>12/16</span><h3>Run + Gun Skate Data</h3>
+            </div>
+            <div class="post-snippet-body">
+              <img src="images/runandgun-logo.png" alt="Run + Gun">
+              <p>Recently I’ve been exploring data collection methods for competitive skateboarding. While I admit skateboarding is as much of an art form as it is a competitive sport ...</p>
+            </div>
+            <div class="post-button">
+                <a class="button" href="/skatedata.html">Check it out</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="personal-data" class="personal-data">
+          <h4>DATA</h4>
+        </div>
+
+        <hr>
+
+      </div>
+    </section>
+  </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Footer</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/min/application-min.js"></script>
+    <script src="js/min/d3.min-min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('.expand').on("click", function(){
+          if($('.banner').height() == 400) {
+            $('.banner').animate({
+              height: 800
+            }, 500, function() {
+              // Animation complete.
+            });
+            $('.banner .container img').animate({
+              "margin-top": 410,
+            }, 500, function() {
+              // Animation complete.
+            });
+          } else {
+            $('.banner').animate({
+              height: 400
+            }, 500, function() {
+              // Animation complete.
+            });
+            $('.banner .container img').animate({
+              "margin-top": 210,
+            }, 500, function() {
+              // Animation complete.
+            });
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      // parse date: 2016-06-24 18:57:09
+      var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
+
+      d3.csv("csv/data.csv")
+          .row(function(d){ return {name:d.name, date: parseDate(d.date), value: Number(d.value) }; })
+          .get(function(error, data){
+
+            // define the size of the chart
+            var height= 300;
+            var width= document.getElementById('personal-data').offsetWidth;
+
+            // get the min & max values for the domain
+            var max = d3.max(data, function(d){ return d.value;});
+            var minDate = d3.min(data, function(d){ return d.date });
+            var maxDate = d3.max(data, function(d){ return d.date });
+
+            // set a scale for the y-axis
+            var y = d3.scaleLinear()
+                        .domain([0, max])
+                        .range([height, 0]);
+            // set a scale for the x-axis
+            var x = d3.scaleTime()
+                        .domain([minDate,maxDate])
+                        .range([0,width]);
+
+            // create the axis
+            var yAxis = d3.axisLeft(y);
+            var xAxis = d3.axisBottom(x);
+
+            // start drawing the chart (aka create the svg)
+            var svg = d3.select(".personal-data").append("svg").attr("height","100%").attr("width","100%");
+
+            // set the margin
+            var margin = {left: 130, right: 50, top: 40, bottom: 0};
+
+            // Nest the habitica entries
+            var habitsByName = d3.nest().key(function(d) { return d.name; }).entries(data);
+
+            var rainbow = d3.scaleSequential(d3.interpolateViridis).domain([0,5]);  // set the colour scale
+
+            // great a group for the chart
+            var chartGroup = svg.append("g")
+                                  .attr("transform","translate("+margin.left+","+margin.top+")");
+
+            var line = d3.line()
+                        .x(function(d){ return x(d.date); })
+                        .y(function(d){ return y(d.value); })
+                        .curve(d3.curveBasis);
+
+            habitsByName.forEach(function(d){
+
+              chartGroup.append("path")
+                    .attr("class", "line")
+                    .attr("d",line(d.values))
+                    .style("stroke", rainbow(habitsByName.indexOf(d)));
+
+              chartGroup.append("text")
+                    .attr("class", "line-label")
+                    .attr("y",habitsByName.indexOf(d)*35)
+                    .attr("x",-130)
+                    .style("stroke", rainbow(habitsByName.indexOf(d)))
+                    .text(d.key);
+            });
+
+            chartGroup.append("g").attr("class","x axis").attr("transform","translate(0,"+height+")").call(xAxis);
+            chartGroup.append("g").attr("class","y axis").call(yAxis);
+
+      });
+    </script>
+  </body>
+</html>
