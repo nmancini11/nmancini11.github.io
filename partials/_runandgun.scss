@@ -1,0 +1,213 @@
+.page-title {
+  margin-top: 100px;
+  @include span-columns(12);
+
+  h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }
+}
+
+text {
+  stroke: none;
+}
+
+.selected {
+  font-weight: 600;
+}
+
+#mainbarchart {
+  height: auto;
+  margin-top: 0;
+  @include media($large-screen) {
+     @include span-columns(7);
+  }
+  @media all and (max-width: $medium-screen) {
+     @include media($medium-screen){
+      @include span-columns(12);
+    }
+  }
+
+  .axis,
+  .tick {
+    color: #fff;
+    fill: #fff;
+
+    line {
+      height: 20px;
+    }
+
+    text {
+      font-weight: bold;
+      size: 16px;
+      font-family: 'Avenir Next';
+      margin-top: 10px;
+    }
+
+    .domain {
+      stroke: none;
+    }
+
+    path {
+      stroke: #ccc;
+      color: #fff;
+    }
+  }
+}
+
+.sidecontainer {
+  height: 410px;
+  @include media($large-screen) {
+     @include span-columns(5);
+    margin-right: 0;
+  }
+  @media all and (max-width: $medium-screen) {
+     @include media($medium-screen){
+      @include span-columns(6);
+      margin-right: 0;
+    }
+  }
+
+  #sidechart {
+    height: 220px;
+    @include span-columns(6);
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  #mallgrabs {
+    height: 220px;
+    padding: 20px;
+    @include span-columns(6);
+    margin-right: 0;
+
+    svg {
+      margin-left: 20px;
+    }
+
+    p {
+      font-size: 24px;
+      line-height: 36px;
+      text-align: center;
+    }
+
+    #dismount {
+      font-size: 36px;
+      line-height: 36px;
+      font-weight: bold;
+    }
+  }
+}
+
+#rundown {
+  @include media($large-screen) {
+     height: 200px;
+     margin-top: 25px;
+     @include span-columns(12);
+  }
+
+  @media all and (max-width: $medium-screen) {
+     @include media($medium-screen){
+      height: 600px;
+    }
+  }
+
+  .rundownTrick {
+    font-size: 14px;
+  }
+}
+
+.highlights {
+  margin-bottom: 30px;
+  li {
+    font-size: 15px;
+    line-height: 36px;
+    margin-left: 20px;
+    list-style-type: square;
+  }
+}
+
+.precourse {
+  p {
+    font-size: 15px;
+    line-height: 26px;
+    margin-bottom: 30px;
+  }
+  li {
+    font-size: 15px;
+    line-height: 26px;
+    margin-left: 20px;
+    list-style-type: square;
+  }
+  ul {
+    margin-top: -30px;
+    margin-bottom: 30px;
+  }
+}
+
+.select-style {
+  border: 1px solid #ccc;
+  width: 200px;
+  border-radius: 3px;
+  overflow: hidden;
+  height: 34px;
+  padding: 5px 0;
+}
+
+.select-style select {
+  padding: 5px 8px;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  // background-image: none;
+  // -webkit-appearance: none;
+}
+
+.select-style select:focus {
+  outline: none;
+}
+
+.trickStance {
+  @include span-columns(12);
+
+  h3 {
+    font-family: AvenirNext-DemiBold;
+    font-size: 22px;
+    color: #4A4A4A;
+  }
+
+  .axis,
+  .tick {
+    color: #fff;
+    fill: #fff;
+
+    line {
+      height: 20px;
+    }
+
+    text {
+      font-weight: normal;
+      size: 16px;
+      font-family: 'Avenir Next';
+      margin-top: 10px;
+    }
+
+    .domain {
+      stroke: none;
+    }
+
+    path {
+      stroke: #ccc;
+      color: #fff;
+    }
+  }
+}
+
+.runandgun-video {
+  @include span-columns(12);
+}
