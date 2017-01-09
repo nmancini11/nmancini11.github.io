@@ -11,7 +11,7 @@
 		<header class="navigation" role="banner">
 		  <div class="navigation-wrapper container">
 		    <div class="logo">
-		        <h1>NICKMANCINI.ME</h1>
+		        <h1><a href="/index.html">NICKMANCINI.ME</a></h1>
 		    </div>
 
 		    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
@@ -23,7 +23,8 @@
 		        <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">SKATE DATA</a>
 		          <ul class="submenu">
 		            <!-- <li><a href="/runandgun.html">Run + Gun 2016</a></li> -->
-		            <li><a href="/runandgun2.html">Run + Gun 2016</a></li>
+		            <li><a href="/runandgun2016.html">Run + Gun 2016</a></li>
+                <li><a href="/runandgun2015.html">Run + Gun 2015</a></li>
 		            <!-- <li class="more"><a href="javascript:void(0)">Street Leage</a>
 		              <ul class="submenu">
 		                <li><a href="javascript:void(0)">Super Crown LA</a></li>
@@ -39,6 +40,9 @@
 
 
     <div class="banner">
+      <div class="container">
+          <img class="expand" src="images/expand.png" alt="expand">
+      </div>
       <div class="video-background">
         <div class="video-foreground">
           <iframe src="https://www.youtube.com/embed/JuwulNsJGNI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
@@ -53,74 +57,34 @@
           <!-- POST SNIPPET -->
           <h4>LATEST</h4>
           <div class="post-snippet">
-            <div class="post-snippet-title">
-              <span>11/16</span><h3>Run + Gun Skate Data</h3>
-            </div>
-            <div class="post-snippet-body">
-              <img src="images/RUN+GUN.png" alt="Run + Gun">
-              <p>Recently I’ve been exploring data collection methods for competitive skateboarding. While I admit skateboarding is as much of an art form as it is a competitive sport, I’m curious to know what can be captured by logging this information…</p>
-            </div>
+            <a href="/runandgun2016.html">
+              <div class="post-snippet-title">
+                <span>1/17</span><h3>Run + Gun Data Analyis</h3>
+              </div>
+              <div class="post-snippet-body">
+                <img src="images/RUN+GUN.png" alt="Run + Gun">
+                <p>For the last three years, The Berrics has hosted a 60 second contest known as Run + Gun. Each skater gets the whole park to themselves for 24 hours to come up with the best 60 secnd run...</p>
+              </div>
+            </a>
           </div>
 
           <!-- POST SNIPPET -->
           <div class="post-snippet">
             <div class="post-snippet-title">
-              <span>11/16</span><h3>Run + Gun Skate Data</h3>
+              <span>12/16</span><h3>Run + Gun Skate Data</h3>
             </div>
             <div class="post-snippet-body">
               <img src="images/RUN+GUN.png" alt="Run + Gun">
-              <p>Recently I’ve been exploring data collection methods for competitive skateboarding. While I admit skateboarding is as much of an art form as it is a competitive sport, I’m curious to know what can be captured by logging this information…</p>
+              <p>Recently I’ve been exploring data collection methods for competitive skateboarding. While I admit skateboarding is as much of an art form as it is a competitive sport ...</p>
             </div>
           </div>
-        </div>
-
-        <div class="social-posts">
-          <h4>SOCIAL</h4>
-
-          <div class="social-post">
-            <div class="social-image">
-              <img src="images/Instagram Post.png" alt="Run + Gun">
-            </div>
-            <div class="social-text">
-              <p>Happy Stokesgiving 🙌🏻 -
-                -
-                #gopro #telemetry #telemetryD #skate #kickflip #frontboard #quik #sportsboards #sports #gforces</p>
-            </div>
-          </div>
-
-          <div class="social-post">
-            <div class="social-image">
-              <img src="images/Instagram Post.png" alt="Run + Gun">
-            </div>
-            <div class="social-text">
-              <p>Happy Stokesgiving 🙌🏻 -
-                -
-                #gopro #telemetry #telemetryD #skate #kickflip #frontboard #quik #sportsboards #sports #gforces</p>
-            </div>
-          </div>
-
-          <div class="social-post">
-            <div class="social-image">
-              <img src="images/Instagram Post.png" alt="Run + Gun">
-            </div>
-            <div class="social-text">
-              <p>Happy Stokesgiving 🙌🏻 -
-                -
-                #gopro #telemetry #telemetryD #skate #kickflip #frontboard #quik #sportsboards #sports #gforces</p>
-            </div>
-          </div>
-        </div>
-
-        <hr>
-
-        <div class="contact-form">
-          <h4>CONTACT</h4>
-
         </div>
 
         <div id="personal-data" class="personal-data">
           <h4>DATA</h4>
         </div>
+
+        <hr>
 
       </div>
     </section>
@@ -128,7 +92,25 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/min/application-min.js"></script>
     <script src="js/min/d3.min-min.js"></script>
-    <!-- <script type="text/javascript" src="js/min/habitica-d3-min.js"></script> -->
+    <script type="text/javascript">
+      $(function() {
+        $('.expand').on("click", function(){
+          if($('.banner').height() == 400) {
+            $('.banner').animate({
+              height: 800
+            }, 500, function() {
+              // Animation complete.
+            });
+          } else {
+            $('.banner').animate({
+              height: 400
+            }, 500, function() {
+              // Animation complete.
+            });
+          }
+        });
+      });
+    </script>
     <script type="text/javascript">
       // parse date: 2016-06-24 18:57:09
       var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
@@ -140,8 +122,6 @@
             // define the size of the chart
             var height= 300;
             var width= document.getElementById('personal-data').offsetWidth;
-
-
 
             // get the min & max values for the domain
             var max = d3.max(data, function(d){ return d.value;});
