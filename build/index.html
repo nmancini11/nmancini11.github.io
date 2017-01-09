@@ -23,8 +23,9 @@
 		        <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">SKATE DATA</a>
 		          <ul class="submenu">
 		            <!-- <li><a href="/runandgun.html">Run + Gun 2016</a></li> -->
+                <li><a href="/skatedata.html">Intro</a></li>
 		            <li><a href="/runandgun2016.html">Run + Gun 2016</a></li>
-                <li><a href="/runandgun2015.html">Run + Gun 2015</a></li>
+                <!-- <li><a href="/runandgun2015.html">Run + Gun 2015</a></li> -->
 		            <!-- <li class="more"><a href="javascript:void(0)">Street Leage</a>
 		              <ul class="submenu">
 		                <li><a href="javascript:void(0)">Super Crown LA</a></li>
@@ -38,11 +39,21 @@
 		  </div>
 		</header>
 
-
+    <div class="page-wrap">
     <div class="banner">
       <div class="container">
           <img class="expand" src="images/expand.png" alt="expand">
       </div>
+
+      <div class="mobile-banner">
+        <div id="js-parallax-window" class="parallax-window">
+          <div class="parallax-static-content">
+            <b>Thanks for stopping by</b>
+          </div>
+          <div id="js-parallax-background" class="parallax-background"></div>
+        </div>
+      </div>
+
       <div class="video-background">
         <div class="video-foreground">
           <iframe src="https://www.youtube.com/embed/JuwulNsJGNI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
@@ -57,7 +68,6 @@
           <!-- POST SNIPPET -->
           <h4>LATEST</h4>
           <div class="post-snippet">
-            <a href="/runandgun2016.html">
               <div class="post-snippet-title">
                 <span>1/17</span><h3>Run + Gun Data Analyis</h3>
               </div>
@@ -65,7 +75,9 @@
                 <img src="images/RUN+GUN.png" alt="Run + Gun">
                 <p>For the last three years, The Berrics has hosted a 60 second contest known as Run + Gun. Each skater gets the whole park to themselves for 24 hours to come up with the best 60 secnd run...</p>
               </div>
-            </a>
+              <div class="post-button">
+                  <a class="button" href="/runandgun2016.html">Check it out</a>
+              </div>
           </div>
 
           <!-- POST SNIPPET -->
@@ -74,8 +86,11 @@
               <span>12/16</span><h3>Run + Gun Skate Data</h3>
             </div>
             <div class="post-snippet-body">
-              <img src="images/RUN+GUN.png" alt="Run + Gun">
+              <img src="images/runandgun-logo.png" alt="Run + Gun">
               <p>Recently I’ve been exploring data collection methods for competitive skateboarding. While I admit skateboarding is as much of an art form as it is a competitive sport ...</p>
+            </div>
+            <div class="post-button">
+                <a class="button" href="/skatedata.html">Check it out</a>
             </div>
           </div>
         </div>
@@ -88,6 +103,12 @@
 
       </div>
     </section>
+  </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Footer</p>
+      </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/min/application-min.js"></script>
@@ -101,9 +122,19 @@
             }, 500, function() {
               // Animation complete.
             });
+            $('.banner .container img').animate({
+              "margin-top": 410,
+            }, 500, function() {
+              // Animation complete.
+            });
           } else {
             $('.banner').animate({
               height: 400
+            }, 500, function() {
+              // Animation complete.
+            });
+            $('.banner .container img').animate({
+              "margin-top": 210,
             }, 500, function() {
               // Animation complete.
             });
