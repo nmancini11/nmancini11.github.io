@@ -4,7 +4,9 @@
 @import "../partials/nav";
 @import "../partials/video";
 @import "../partials/personal-data-chart";
-@import "../partials/runandgun"; // RESET
+@import "../partials/runandgun";
+@import "../partials/parallax";
+// RESET
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -209,13 +211,18 @@ h1 a {
 .blog-posts {
   @include media($large-screen) {
      @include span-columns(6);
+
   }
   @media all and (max-width: $medium-screen) {
      @include media($medium-screen){
       @include span-columns(12);
+
+      margin-top: 30px;
     }
   }
-  margin-top: 30px;
+
+  margin-top:0px;
+
 
   .post-snippet {
     .post-snippet-title {
@@ -223,7 +230,7 @@ h1 a {
 
       span {
         float: left;
-        line-height: 50px;
+        line-height: 36px;
         font-size: 22px;
         color: #4A4A4A;
         margin-right: 15px;
@@ -231,12 +238,12 @@ h1 a {
 
       h3 {
         font-size: 24px;
-        float: left;
+        line-height: 36px;
       }
     }
 
     .post-snippet-body {
-      height: 200px;
+      height: 155px;
 
       img {
         @include span-columns(1.5 of 6);
@@ -250,12 +257,33 @@ h1 a {
         color: #4A4A4A;
       }
     }
+
+    .post-button {
+      @include span-columns(6 of 6);
+
+      button {
+        margin-right: 25px;
+        // @include span-columns(3);
+        float: right;
+        margin-bottom: 40px;
+        margin-top: 0px;
+
+
+        a {
+          color: #fff;
+        }
+      }
+    }
   }
 }
 
 #personal-data {
   margin-top: 30px;
-  height: 450px;
+  height: 750px;
+
+  h4 {
+    float: left;
+  }
 
   @include media($large-screen) {
      @include span-columns(6);

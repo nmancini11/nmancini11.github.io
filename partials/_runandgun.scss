@@ -97,13 +97,28 @@ text {
   }
 }
 
-.rundown {
-  height: 400px;
-  margin-top: -25px;
-  @include span-columns(12);
+#rundown {
+  @include media($large-screen) {
+     height: 200px;
+     margin-top: 25px;
+     @include span-columns(12);
+  }
+
+  @media all and (max-width: $medium-screen) {
+     @include media($medium-screen){
+      height: 600px;
+    }
+  }
 
   .rundownTrick {
     font-size: 14px;
+  }
+}
+
+.synopsis {
+  p {
+    font-size: 14px;
+    line-height: 26px;
   }
 }
 

@@ -266,17 +266,14 @@ function fixMiCharts() {
   dispatch.on("load.rundown", function() {
     "use strict";
     var margin = {
-        top: 70,
+        top: 10,
         right: 10,
-        bottom: 70,
+        bottom: 10,
         left: 10
       },
       width = document.getElementById('rundown').offsetWidth - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom,
       max = 71;
-
-    // well fuck.. if I want this to scale for mobile, I have to change the orientation of the chart.
-    // if statement?
 
     if ($(window).width() < 600 ) {
       var y = d3.scaleLinear()
