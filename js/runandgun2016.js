@@ -9,14 +9,11 @@ function fixMiCharts() {
   // remove all the old charts when browser resizes
   var mallgrabs = d3.select(".mallgrabs");
 
+  // delete all SVG charts except that sweet mall grab icon
   d3.selectAll("#mainbarchart svg, #rundown svg, #sidechart svg, #trickstance svg").remove();
   d3.selectAll("text").remove();
   d3.selectAll("select").remove();
   d3.selectAll(".select-style").remove();
-
-  // d3.select("#mallgrabs").append("svg").append("path").attr("d","M1.08517059,72.6425064 C1.08517059,70.43741 2.87789149,68.6498261 5.09033241,68.6498261 L14.4427382,68.6498261 C16.654728,68.6498261 18.4479,70.4489444 18.4479,72.6425064 L18.4479,91.1350642 C18.4479,93.3401606 16.6551791,95.1277444 14.4427382,95.1277444 L5.09033241,95.1277444 C2.87834261,95.1277444 1.08517059,93.3286262 1.08517059,91.1350642 L1.08517059,72.6425064 Z M0,77.2979867 L1.08517059,77.2979867 L1.08517059,84.3246172 L0,84.3246172 L0,77.2979867 Z");
-  // d3.select("#mallgrabs").select("svg").append("path").attr("d","M78.6748677,72.6425064 C78.6748677,70.43741 80.4675886,68.6498261 82.6800295,68.6498261 L92.0324353,68.6498261 C94.2444251,68.6498261 96.0375971,70.4489444 96.0375971,72.6425064 L96.0375971,91.1350642 C96.0375971,93.3401606 94.2448762,95.1277444 92.0324353,95.1277444 L82.6800295,95.1277444 C80.4680397,95.1277444 78.6748677,93.3286262 78.6748677,91.1350642 L78.6748677,72.6425064 Z M96.0375971,78.9144653 L97.1227677,78.9144653 L97.1227677,85.9410958 L96.0375971,85.9410958 L96.0375971,78.9144653 Z");
-  // d3.select("#mallgrabs").select("svg").append("path").attr("d","M78.6748677,72.6425064 C78.6748677,70.43741 80.4675886,68.6498261 82.6800295,68.6498261 L92.0324353,68.6498261 C94.2444251,68.6498261 96.0375971,70.4489444 96.0375971,72.6425064 L96.0375971,91.1350642 C96.0375971,93.3401606 94.2448762,95.1277444 92.0324353,95.1277444 L82.6800295,95.1277444 C80.4680397,95.1277444 78.6748677,93.3286262 78.6748677,91.1350642 L78.6748677,72.6425064 Z M96.0375971,78.9144653 L97.1227677,78.9144653 L97.1227677,85.9410958 L96.0375971,85.9410958 L96.0375971,78.9144653 Z");
 
   d3.csv("/data/runandgun.csv", function(error, skaters) {
     "use strict";
@@ -275,15 +272,27 @@ function fixMiCharts() {
         left: 10
       },
       width = document.getElementById('rundown').offsetWidth - margin.left - margin.right,
-      height = 70 - margin.top - margin.bottom,
+      height = 600 - margin.top - margin.bottom,
       max = 71;
 
-    var x = d3.scaleLinear()
-      .domain([0, max])
-      .rangeRound([0, width])
-      .nice();
+    // well fuck.. if I want this to scale for mobile, I have to change the orientation of the chart.
+    // if statement?
 
-    var xAxis = d3.axisBottom(x).ticks(0);
+    if ($(window).width() < 600 ) {
+      var y = d3.scaleLinear()
+        .domain([0, max])
+        .rangeRound([0, height])
+        .nice();
+
+      var yAxis = d3.axisRight(y).ticks(0);
+    } else {
+      var x = d3.scaleLinear()
+        .domain([0, max])
+        .rangeRound([0, width])
+        .nice();
+
+      var xAxis = d3.axisBottom(x).ticks(0);
+    }
 
     var svg = d3.select(".rundown").append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -300,51 +309,97 @@ function fixMiCharts() {
       max = d3.sum(d.timeBetweenTricks.split(","));
       console.log(max);
 
-      x = d3.scaleLinear()
-        .domain([0, max])
-        .rangeRound([0, width])
-        .nice();
+      if ($(window).width() < 600 ) {
+        y = d3.scaleLinear()
+          .domain([0, max])
+          .rangeRound([0, height])
+          .nice();
 
-      xAxis = d3.axisBottom(x).ticks(0);
+        yAxis = d3.axisRight(y).ticks(0);
 
-      svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(" + 0 + "," + 20 + ")")
-        .style("fill", "#44bf70")
-        .call(xAxis);
+        svg.append("g")
+          .attr("class", "y axis")
+          .attr("transform", "translate(" + width/4 + "," + 0 + ")")
+          .style("fill", "#44bf70")
+          .call(yAxis);
 
-      for (var i = 0; i < runDuration.length; i++) {
-        runProgress += parseInt(runDuration[i]);
+        for (var i = 0; i < runDuration.length; i++) {
+          runProgress += parseInt(runDuration[i]);
 
-        var y = 20;
+          var x = 20;
+          var centerCir = (width/4)-20;
 
-        // if the i ODD or EVEN
-        if (Math.abs(i % 2) === 1) {
-          y = 50;
-        } else {
-          y = 5;
+          svg.append("circle")
+            .style("stroke", "#ddd")
+            .style("fill", "#ffffff")
+            .attr("transform", "translate(" + centerCir + "," + 0 + ")")
+            .transition()
+            .duration(750)
+            .delay(150)
+            .attr("cy", y(runProgress))
+            .attr("cx", "23")
+            .attr("r", "8");
+
+          svg.append("text").append("tspan")
+            .attr("y", y(runProgress)+5)
+            .attr("transform", "translate(" + width/4 + "," + 0 + ")")
+            .attr("x", centerCir+40)
+            .style("opacity", "0")
+            .transition()
+            .duration(750)
+            .delay(150)
+            .style("opacity", "1")
+            .text(runTricks[i])
+            .attr("class", "rundownTrick");
         }
 
-        svg.append("circle")
-          .style("stroke", "#ddd")
-          .style("fill", "#ffffff")
-          .transition()
-          .duration(750)
-          .delay(150)
-          .attr("cx", x(runProgress))
-          .attr("cy", "23")
-          .attr("r", "8");
+      } else {
+        x = d3.scaleLinear()
+          .domain([0, max])
+          .rangeRound([0, width])
+          .nice();
 
-        svg.append("text").append("tspan")
-          .attr("x", x(runProgress) - 15)
-          .attr("y", y)
-          .style("opacity", "0")
-          .transition()
-          .duration(750)
-          .delay(150)
-          .style("opacity", "1")
-          .text(runTricks[i])
-          .attr("class", "rundownTrick");
+        xAxis = d3.axisBottom(x).ticks(0);
+
+        svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(" + 0 + "," + 20 + ")")
+          .style("fill", "#44bf70")
+          .call(xAxis);
+
+        for (var i = 0; i < runDuration.length; i++) {
+          runProgress += parseInt(runDuration[i]);
+
+          var y = 20;
+
+          // if the i ODD or EVEN
+          if (Math.abs(i % 2) === 1) {
+            y = 50;
+          } else {
+            y = 5;
+          }
+
+          svg.append("circle")
+            .style("stroke", "#ddd")
+            .style("fill", "#ffffff")
+            .transition()
+            .duration(750)
+            .delay(150)
+            .attr("cx", x(runProgress))
+            .attr("cy", "23")
+            .attr("r", "8");
+
+          svg.append("text").append("tspan")
+            .attr("x", x(runProgress) - 15)
+            .attr("y", y)
+            .style("opacity", "0")
+            .transition()
+            .duration(750)
+            .delay(150)
+            .style("opacity", "1")
+            .text(runTricks[i])
+            .attr("class", "rundownTrick");
+        }
       }
 
     });
@@ -367,8 +422,22 @@ function fixMiCharts() {
 
       // make the radial chart smaller on smaller screens
       if ($(window).width() < 900 ) {
-        dcwidth = dcwidth/1.2;
-        dcheight = dcheight/1.2;
+        dcwidth = dcwidth/1.35;
+        dcheight = dcheight/1.35;
+
+        donutChart.append("text")
+          .attr("class", "line-label")
+          .attr("y", dcheight / 1.25)
+          .attr("x", dcwidth / 1.73)
+          .style("stroke", "green", "text-align", "center")
+          .text("seconds");
+      } else {
+        donutChart.append("text")
+          .attr("class", "line-label")
+          .attr("y", dcheight / 1.68)
+          .attr("x", dcwidth / 2.43)
+          .style("stroke", "green", "text-align", "center")
+          .text("seconds");
       }
 
 
@@ -380,12 +449,12 @@ function fixMiCharts() {
       .outerRadius((dcwidth / 3.1) + 10)
       .startAngle(0);
 
-    donutChart.append("text")
-      .attr("class", "line-label")
-      .attr("y", dcheight / 1.68)
-      .attr("x", dcwidth / 2.43)
-      .style("stroke", "green", "text-align", "center")
-      .text("seconds");
+    // donutChart.append("text")
+    //   .attr("class", "line-label")
+    //   .attr("y", dcheight / 1.68)
+    //   .attr("x", dcwidth / 2.43)
+    //   .style("stroke", "green", "text-align", "center")
+    //   .text("seconds");
 
     // Add the background arc, from 0 to 100% (tau).
     g.append("path")
@@ -461,12 +530,22 @@ function fixMiCharts() {
 
       d3.selectAll(".second").remove();
 
-      donutChart.append("text")
-        .attr("class", "line-label second")
-        .attr("y", dcheight / 1.9)
-        .attr("x", dcwidth / 2.25)
-        .style("font-size", "36px")
-        .text(Math.round(arcyArc));
+
+        if ($(window).width() < 900 ) {
+          donutChart.append("text")
+            .attr("class", "line-label second")
+            .attr("y", dcheight / 1.5)
+            .attr("x", dcwidth / 1.62)
+            .style("font-size", "36px")
+            .text(Math.round(arcyArc));
+        } else {
+          donutChart.append("text")
+            .attr("class", "line-label second")
+            .attr("y", dcheight / 1.9)
+            .attr("x", dcwidth / 2.25)
+            .style("font-size", "36px")
+            .text(Math.round(arcyArc));
+        }
 
       foreground.transition().duration(1500).ease(d3.easeExpInOut)
         .attrTween("d", cirDegrees);

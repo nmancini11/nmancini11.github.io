@@ -2,6 +2,7 @@
   margin-top: 100px;
   @include span-columns(12);
 }
+
 text {
   stroke: none;
 }
@@ -11,11 +12,19 @@ text {
 }
 
 #mainbarchart {
-  height: 410px;
-  margin-top: 0px;
-  @include span-columns(7);
+  height: auto;
+  margin-top: 0;
+  @include media($large-screen) {
+     @include span-columns(7);
+  }
+  @media all and (max-width: $medium-screen) {
+     @include media($medium-screen){
+      @include span-columns(12);
+    }
+  }
 
-  .axis, .tick {
+  .axis,
+  .tick {
     color: #fff;
     fill: #fff;
 
@@ -41,39 +50,52 @@ text {
   }
 }
 
-#sidechart {
-  height: 200px;
-  @include span-columns(5.8);
+.sidecontainer {
+  height: 410px;
+  @include media($large-screen) {
+     @include span-columns(5);
+    margin-right: 0;
+  }
+  @media all and (max-width: $medium-screen) {
+     @include media($medium-screen){
+      @include span-columns(6);
+      margin-right: 0;
+    }
+  }
 
-  svg {
-    height: 100%;
-    width: 100%;
+  #sidechart {
+    height: 220px;
+    @include span-columns(6);
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  #mallgrabs {
+    height: 220px;
+    padding: 20px;
+    @include span-columns(6);
+    margin-right: 0;
+
+    svg {
+      margin-left: 20px;
+    }
+
+    p {
+      font-size: 24px;
+      line-height: 36px;
+      text-align: center;
+    }
+
+    #dismount {
+      font-size: 36px;
+      line-height: 36px;
+      font-weight: bold;
+    }
   }
 }
-
-#mallgrabs {
-  height: 200px;
-  padding: 20px;
-  @include span-columns(5.8);
-
-  svg {
-    margin-left: 20px;
-  }
-
-  p {
-    font-size: 24px;
-    line-height: 36px;
-  }
-
-  #dismount {
-    font-size: 36px;
-    line-height: 36px;
-    font-weight: bold;
-  }
-
-
-}
-
 
 .rundown {
   height: 400px;
@@ -86,31 +108,26 @@ text {
 }
 
 .select-style {
-    border: 1px solid #ccc;
-    width: 200px;
-    border-radius: 3px;
-    overflow: hidden;
-    height: 34px;
-    padding: 5px 0px;
+  border: 1px solid #ccc;
+  width: 200px;
+  border-radius: 3px;
+  overflow: hidden;
+  height: 34px;
+  padding: 5px 0;
 }
 
 .select-style select {
-    padding: 5px 8px;
-    width: 100%;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    // background-image: none;
-    // -webkit-appearance: none;
+  padding: 5px 8px;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  // background-image: none;
+  // -webkit-appearance: none;
 }
 
 .select-style select:focus {
-    outline: none;
-}
-
-.sidecontainer {
-  height: 410px;
-  @include span-columns(5);
+  outline: none;
 }
 
 .trickStance {
@@ -122,7 +139,8 @@ text {
     color: #4A4A4A;
   }
 
-  .axis, .tick {
+  .axis,
+  .tick {
     color: #fff;
     fill: #fff;
 

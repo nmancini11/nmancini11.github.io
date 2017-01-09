@@ -220,25 +220,3 @@ function fixMiCharts(){
 
 d3.select(window).on("resize",fixMiCharts);
 fixMiCharts();
-
-
-// $(function() {
-//   $("#mainbarchart text").on("click", function(){
-//     if (selectedSkater == this.id) {
-//       // do nothing
-//       console.log("fuck");
-//     } else {
-//       // select the Global set skater and set the class
-//       selectedSkater = this.id;
-//       // get index of selected skater
-//       skaterString = selectedSkater.split(/(?=[A-Z])/).join(" ");
-//       skaterIndex = data.map(function(x) {return x.skater; }).indexOf(skaterString);
-//       // remove selected class
-//       $("#mainbarchart").find(".selected").removeClass("selected");
-//       // apply new class to select skater
-//       $(this).addClass("selected");
-//       console.log(selectedSkater.split(/(?=[A-Z])/).join(" ")+" is currently selected");
-//       console.log("time between tricks: "+d3.sum(data[skaterIndex].timeBetweenTricks));
-//     }
-//   });
-// });
