@@ -6,7 +6,7 @@
 @import "../partials/personal-data-chart";
 @import "../partials/runandgun";
 @import "../partials/parallax";
-// RESET
+@import "../partials/fadein"; // RESET
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -92,10 +92,10 @@ u,
 ul,
 var,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -109,191 +109,182 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+    display: block;
 }
 
 body {
-  line-height: 1;
+    line-height: 1;
 }
 
 ol,
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 blockquote,
 q {
-  quotes: none;
+    quotes: none;
 }
 
 blockquote {
-  &:after,
-  &:before {
-    content: '';
-    content: none;
-  }
+    &:after,
+    &:before {
+        content: '';
+        content: none;
+    }
 }
 
 q {
-  &:after,
-  &:before {
-    content: '';
-    content: none;
-  }
+    &:after,
+    &:before {
+        content: '';
+        content: none;
+    }
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 hr {
-  width: 100%;
-  padding: 10px 0;
-  margin: 50px 0;
+    width: 100%;
+    padding: 10px 0;
+    margin: 50px 0;
 }
 
 nav {
-  @include outer-container;
+    @include outer-container;
 }
 
 h1 a {
-  color: #555;
+    color: #555;
 
-  &:visited {
-    text-decoration: none;
-    color: #555;
-  }
-  &:hover {
-    text-decoration: none;
-    color: #555;
-  }
+    &:visited {
+        text-decoration: none;
+        color: #555;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: #555;
+    }
 }
 
 .separator {
-  width: 100%;
-  background-color: #fff;
-  height: 800px;
+    width: 100%;
+    background-color: #fff;
+    height: 100%;
 }
 
 .container {
-  padding: 20px;
-  @include outer-container;
-  background-color: #fff;
-}
-
-/* mixin for multiline */
-@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
-  overflow: hidden;
-  position: relative;
-  line-height: $lineHeight;
-  max-height: $lineHeight * $lineCount;
-  text-align: justify;
-  margin-right: -1em;
-  padding-right: 1em;
-  &:before {
-    content: '...';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 1em;
-    height: 1em;
-    margin-top: 0.2em;
-    background: $bgColor;
-  }
+    padding: 20px;
+    @include outer-container;
+    background-color: #fff;
 }
 
 .blog-posts {
-  @include media($large-screen) {
-     @include span-columns(6);
-
-  }
-  @media all and (max-width: $medium-screen) {
-     @include media($medium-screen){
-      @include span-columns(12);
-
-      margin-top: 30px;
+    @include media($large-screen) {
+         @include span-columns(6);
     }
-  }
-
-  margin-top:0px;
-
-
-  .post-snippet {
-    .post-snippet-title {
-      @include span-columns(6 of 6);
-
-      span {
-        float: left;
-        line-height: 36px;
-        font-size: 22px;
-        color: #4A4A4A;
-        margin-right: 15px;
-      }
-
-      h3 {
-        font-size: 24px;
-        line-height: 36px;
-      }
-    }
-
-    .post-snippet-body {
-      height: 155px;
-
-      img {
-        @include span-columns(1.5 of 6);
-      }
-
-      p {
-        @include span-columns(4.5 of 6);
-        font-size: 16px;
-        line-height: 22px;
-        padding-right: 20px;
-        color: #4A4A4A;
-      }
-    }
-
-    .post-button {
-      @include span-columns(6 of 6);
-
-      button {
-        margin-right: 25px;
-        // @include span-columns(3);
-        float: right;
-        margin-bottom: 40px;
-        margin-top: 0px;
-
-
-        a {
-          color: #fff;
+    @media all and (max-width: $medium-screen) {
+         @include media($medium-screen){
+            @include span-columns(12);
+            margin-top: 30px;
         }
-      }
     }
-  }
+    margin-top: 0;
+
+    .post-snippet {
+        .post-snippet-title {
+            @include span-columns(6 of 6);
+
+            span {
+                float: left;
+                line-height: 36px;
+                font-size: 22px;
+                color: #4A4A4A;
+                margin-right: 15px;
+            }
+
+            h3 {
+                font-size: 24px;
+                line-height: 36px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .post-snippet-body {
+            height: 155px;
+
+            img {
+                @include span-columns(1.5 of 6);
+            }
+
+            p {
+                @include span-columns(4.5 of 6);
+                font-size: 16px;
+                line-height: 22px;
+                padding-right: 20px;
+                color: #4A4A4A;
+            }
+        }
+
+        .post-button {
+            @include span-columns(6 of 6);
+
+            .button,
+            button {
+                margin-right: 25px;
+                // @include span-columns(3);
+                float: right;
+                margin-bottom: 40px;
+                margin-top: 0;
+
+                a {
+                    color: #fff;
+                }
+            }
+        }
+    }
 }
 
 #personal-data {
-  margin-top: 30px;
-  height: 750px;
+    height: 520px;
 
-  h4 {
-    float: left;
-  }
-
-  @include media($large-screen) {
-     @include span-columns(6);
-     margin-right: 0;
-  }
-  @media all and (max-width: $medium-screen) {
-     @include media($medium-screen){
-      @include span-columns(12);
-      margin-right: 0;
+    h4 {
+        float: left;
     }
-  }
+    @include media($large-screen) {
+         @include span-columns(6);
+        margin-right: 0;
+    }
+    @media all and (max-width: $medium-screen) {
+         @include media($medium-screen){
+            @include span-columns(12);
+            margin-right: 0;
+        }
+    }
+}
 
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -230px;
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+.footer,
+.page-wrap:after {
+    height: 230px;
+}
+
+.footer {
+    background: #fff;
 }

@@ -1,6 +1,12 @@
 .page-title {
   margin-top: 100px;
   @include span-columns(12);
+
+  h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }
 }
 
 text {
@@ -115,10 +121,31 @@ text {
   }
 }
 
-.synopsis {
+.highlights {
+  margin-bottom: 30px;
+  li {
+    font-size: 15px;
+    line-height: 36px;
+    margin-left: 20px;
+    list-style-type: square;
+  }
+}
+
+.precourse {
   p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 26px;
+    margin-bottom: 30px;
+  }
+  li {
+    font-size: 15px;
+    line-height: 26px;
+    margin-left: 20px;
+    list-style-type: square;
+  }
+  ul {
+    margin-top: -30px;
+    margin-bottom: 30px;
   }
 }
 
@@ -179,4 +206,8 @@ text {
       color: #fff;
     }
   }
+}
+
+.runandgun-video {
+  @include span-columns(12);
 }
