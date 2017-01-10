@@ -417,7 +417,8 @@ function fixMiCharts() {
       g = donutChart.append("g").attr("transform", "translate(" + dcwidth / 1.9 + "," + dcheight / 2 + ")");
 
       // make the radial chart smaller on smaller screens
-      if ($(window).width() < 900 ) {
+
+      if ($(window).width() < 500 ) {
         dcwidth = dcwidth/1.35;
         dcheight = dcheight/1.35;
 
@@ -425,6 +426,15 @@ function fixMiCharts() {
           .attr("class", "line-label")
           .attr("y", dcheight / 1.25)
           .attr("x", dcwidth / 1.73)
+          .text("seconds")
+          .style("font-size", "12px");
+      } else if ($(window).width() < 900 ) {
+        dcwidth = dcwidth/1.35;
+        dcheight = dcheight/1.35;
+        donutChart.append("text")
+          .attr("class", "line-label")
+          .attr("y", dcheight / 1.25)
+          .attr("x", dcwidth / 1.63)
           .text("seconds");
       } else {
         donutChart.append("text")
