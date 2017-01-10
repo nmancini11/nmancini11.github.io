@@ -32,14 +32,14 @@ header.navigation {
     position: relative;
     z-index: 9999;
 
-    h1.title a{
+    h1 a{
       line-height: $navigation-height;
 
-      @include media($large-screen) {
+      @include media('900px') {
          font-size: 1.7em;
       }
-      @media all and (max-width: $medium-screen) {
-         @include media($medium-screen){
+      @media all and (max-width: '600px') {
+         @include media('600px'){
           font-size: 1.2em;
         }
       }

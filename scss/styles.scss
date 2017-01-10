@@ -156,20 +156,20 @@ hr {
 nav {
     @include outer-container;
 }
-
-h1 a {
-    color: #555;
-
-    &:visited {
-        text-decoration: none;
-        color: #555;
-    }
-
-    &:hover {
-        text-decoration: none;
-        color: #555;
-    }
-}
+// 
+// h1 a {
+//     color: #555;
+//
+//     &:visited {
+//         text-decoration: none;
+//         color: #555;
+//     }
+//
+//     &:hover {
+//         text-decoration: none;
+//         color: #555;
+//     }
+// }
 
 .separator {
     width: 100%;

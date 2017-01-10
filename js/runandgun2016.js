@@ -431,7 +431,6 @@ function fixMiCharts() {
           .attr("class", "line-label")
           .attr("y", dcheight / 1.68)
           .attr("x", dcwidth / 2.43)
-          .style("stroke", "green", "text-align", "center")
           .text("seconds");
       }
 
