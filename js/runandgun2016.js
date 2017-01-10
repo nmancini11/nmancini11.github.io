@@ -121,7 +121,6 @@ function fixMiCharts() {
         .attr("class", obj.skater.replace(/ +/g, ""))
         .attr("y", (iterator * 30) + 7)
         .attr("x", -(margin.left))
-        .style("stroke", "green", "text-align", "center")
         .text(obj.skater);
     }
 
@@ -426,7 +425,6 @@ function fixMiCharts() {
           .attr("class", "line-label")
           .attr("y", dcheight / 1.25)
           .attr("x", dcwidth / 1.73)
-          .style("stroke", "green", "text-align", "center")
           .text("seconds");
       } else {
         donutChart.append("text")
