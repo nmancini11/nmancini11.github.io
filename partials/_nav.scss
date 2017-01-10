@@ -37,11 +37,11 @@ header.navigation {
       color: #555;
 
       @include media('900px') {
-         font-size: 1.7em;
+         font-size: 30px;
       }
       @media all and (max-width: '600px') {
          @include media('600px'){
-          font-size: 1.2em;
+          font-size: 18px;
         }
       }
     }
