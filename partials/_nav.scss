@@ -32,9 +32,17 @@ header.navigation {
     position: relative;
     z-index: 9999;
 
-    h1 {
-      font-size: 1.7em;
+    h1.title a{
       line-height: $navigation-height;
+
+      @include media($large-screen) {
+         font-size: 1.7em;
+      }
+      @media all and (max-width: $medium-screen) {
+         @include media($medium-screen){
+          font-size: 1.2em;
+        }
+      }
     }
   }
 
