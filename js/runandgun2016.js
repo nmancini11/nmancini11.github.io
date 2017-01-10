@@ -518,25 +518,25 @@ function fixMiCharts() {
       d3.selectAll(".second").remove();
 
 
-        if ($(window).width() < 900 ) {
+        if ($(window).width() < 500 ) {
           donutChart.append("text")
             .attr("class", "line-label second")
             .attr("y", dcheight / 1.5)
             .attr("x", dcwidth / 1.62)
-            .style("font-size", "36px")
+            .style("font-size", "28px")
             .text(Math.round(arcyArc));
-        } else if ($(window).width() < 600 ) {
+        } else if ($(window).width() < 900 ) {
           donutChart.append("text")
             .attr("class", "line-label second")
             .attr("y", dcheight / 1.5)
-            .attr("x", dcwidth / 1.62)
-            .style("font-size", "12px")
+            .attr("x", dcwidth / 1.55)
+            .style("font-size", "36px")
             .text(Math.round(arcyArc));
         } else {
           donutChart.append("text")
             .attr("class", "line-label second")
-            .attr("y", dcheight / 1.9)
-            .attr("x", dcwidth / 2.25)
+            .attr("y", dcheight/2)
+            .attr("x", dcwidth/2.3)
             .style("font-size", "36px")
             .text(Math.round(arcyArc));
         }
