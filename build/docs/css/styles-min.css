@@ -25,9 +25,6 @@ button, [type='button'], [type='reset'], [type='submit'], .button {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap; }
-  @media screen and (min-width: 900px) {
-    button, [type='button'], [type='reset'], [type='submit'], .button {
-      margin-bottom: 0px; } }
   button:hover, button:focus, [type='button']:hover, [type='button']:focus, [type='reset']:hover, [type='reset']:focus, [type='submit']:hover, [type='submit']:focus, .button:hover, .button:focus {
     background-color: #36995a;
     color: #fff; }
@@ -216,12 +213,9 @@ header.navigation {
       clear: both;
       content: "";
       display: block; }
-    header.navigation .navigation-wrapper h1 a {
-      line-height: 60px;
-      color: #555; }
-      @media screen and (min-width: 900px) {
-        header.navigation .navigation-wrapper h1 a {
-          font-size: 30px; } }
+    header.navigation .navigation-wrapper h1 {
+      font-size: 1.7em;
+      line-height: 60px; }
   header.navigation .logo {
     float: left;
     max-height: 60px;
@@ -676,13 +670,11 @@ text {
   padding: 5px 0; }
 
 .select-style select {
+  padding: 5px 8px;
   width: 100%;
   border: none;
   box-shadow: none;
   background: transparent; }
-  @media screen and (min-width: 900px) {
-    .select-style select {
-      padding: 5px 8px; } }
 
 .select-style select:focus {
   outline: none; }
@@ -718,9 +710,6 @@ text {
     .trickStance .tick path {
       stroke: #ccc;
       color: #fff; }
-
-.skater {
-  stroke: none; }
 
 .runandgun-video {
   float: left;
@@ -915,6 +904,15 @@ nav {
     clear: both;
     content: "";
     display: block; }
+
+h1 a {
+  color: #555; }
+  h1 a:visited {
+    text-decoration: none;
+    color: #555; }
+  h1 a:hover {
+    text-decoration: none;
+    color: #555; }
 
 .separator {
   width: 100%;
