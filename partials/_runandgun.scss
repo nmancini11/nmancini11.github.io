@@ -208,6 +208,10 @@ text {
   }
 }
 
+.skater {
+  stroke: none;
+}
+
 .runandgun-video {
   @include span-columns(12);
 }
