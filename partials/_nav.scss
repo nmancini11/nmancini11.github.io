@@ -34,6 +34,7 @@ header.navigation {
 
     h1 a{
       line-height: $navigation-height;
+      color: #555;
 
       @include media('900px') {
          font-size: 1.7em;
