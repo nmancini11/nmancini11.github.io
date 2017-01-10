@@ -119,7 +119,7 @@ function fixMiCharts() {
       svg.append("text")
         .attr("class", "skater")
         .attr("class", obj.skater.replace(/ +/g, ""))
-        .style("stroke","none")
+        .attr("stroke","none")
         .attr("y", (iterator * 30) + 7)
         .attr("x", -(margin.left))
         .text(obj.skater);
