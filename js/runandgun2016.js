@@ -119,6 +119,7 @@ function fixMiCharts() {
       svg.append("text")
         .attr("class", "skater")
         .attr("class", obj.skater.replace(/ +/g, ""))
+        .style("stroke","none")
         .attr("y", (iterator * 30) + 7)
         .attr("x", -(margin.left))
         .text(obj.skater);
@@ -442,13 +443,6 @@ function fixMiCharts() {
       .innerRadius(dcwidth / 3.1)
       .outerRadius((dcwidth / 3.1) + 10)
       .startAngle(0);
-
-    // donutChart.append("text")
-    //   .attr("class", "line-label")
-    //   .attr("y", dcheight / 1.68)
-    //   .attr("x", dcwidth / 2.43)
-    //   .style("stroke", "green", "text-align", "center")
-    //   .text("seconds");
 
     // Add the background arc, from 0 to 100% (tau).
     g.append("path")
