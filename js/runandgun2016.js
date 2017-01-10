@@ -323,7 +323,6 @@ function fixMiCharts() {
         for (var i = 0; i < runDuration.length; i++) {
           runProgress += parseInt(runDuration[i]);
 
-          var x = 20;
           var centerCir = (width/4)-20;
 
           svg.append("circle")
@@ -364,13 +363,13 @@ function fixMiCharts() {
           .style("fill", "#44bf70")
           .call(xAxis);
 
-        for (var i = 0; i < runDuration.length; i++) {
-          runProgress += parseInt(runDuration[i]);
+        for (var p = 0; p < runDuration.length; p++) {
+          runProgress += parseInt(runDuration[p]);
 
           var y = 20;
 
           // if the i ODD or EVEN
-          if (Math.abs(i % 2) === 1) {
+          if (Math.abs(p % 2) === 1) {
             y = 50;
           } else {
             y = 5;
@@ -394,7 +393,7 @@ function fixMiCharts() {
             .duration(750)
             .delay(150)
             .style("opacity", "1")
-            .text(runTricks[i])
+            .text(runTricks[p])
             .attr("class", "rundownTrick");
         }
       }
@@ -555,20 +554,10 @@ var windowWidth = $(window).width();
 
 $(window).resize(function() {
     // do nothing if the width is the same
-    if ($(window).width()==windowWidth) {
+    if ($(window).width()===windowWidth) {
       // do nothing
     } else {
         fixMiCharts();
     }
 });
-
-// // redraw ze charts on window resize
-// d3.select(window).on("resize", function(){
-//   if(window.mobilecheck()) {
-//     // do nothing
-//
-//   } else {
-//     fixMiCharts();
-//   }
-// });
 fixMiCharts();
