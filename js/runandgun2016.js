@@ -545,5 +545,11 @@ function fixMiCharts() {
 }
 
 // redraw ze charts on window resize
-d3.select(window).on("resize",fixMiCharts);
+d3.select(window).on("resize", function(){
+  if($.browser.device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))) {
+    // do nothing
+  } else {
+    return fixMiCharts();
+  }
+});
 fixMiCharts();

@@ -19,6 +19,15 @@
   vertical-align: middle;
   white-space: nowrap;
 
+  @include media($large-screen) {
+      margin-bottom: 0px;
+  }
+  @media all and (max-width: $medium-screen) {
+       @include media($medium-screen){
+          margin-top: 30px;
+      }
+  }
+
   &:hover,
   &:focus {
     background-color: shade($action-color, 20%);
