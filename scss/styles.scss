@@ -227,7 +227,7 @@ nav {
                 @include span-columns(4.5 of 6);
                 font-size: 16px;
                 line-height: 22px;
-                padding-right: 20px;
+                padding-right: 10px;
                 color: #4A4A4A;
             }
         }
@@ -235,13 +235,14 @@ nav {
         .post-button {
             @include span-columns(6 of 6);
 
-            .button,
-            button {
+            .button {
                 margin-right: 25px;
                 // @include span-columns(3);
                 float: right;
                 margin-bottom: 40px;
-                margin-top: 0;
+                @media all and (max-width: 720px) {
+                  margin-top: 15px;
+                }
 
                 a {
                     color: #fff;
@@ -287,4 +288,14 @@ nav {
 
 .footer {
     background: #fff;
+
+    ul li {
+      list-style-type: none;
+      display: inline;
+      margin: 10px;
+
+      img {
+        height: 50px;
+      }
+    }
 }
