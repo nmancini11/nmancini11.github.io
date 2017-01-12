@@ -104,16 +104,13 @@ text {
 }
 
 #rundown {
-  @include media($large-screen) {
-     height: 200px;
-     margin-top: 25px;
-     @include span-columns(12);
-  }
+   height: 200px;
+   margin-top: 25px;
+   @include span-columns(12);
 
-  @media all and (max-width: $medium-screen) {
-     @include media($medium-screen){
-      height: 600px;
-    }
+
+  @media all and (max-width: 600px) {
+      height: 660px;
   }
 
   .rundownTrick {
