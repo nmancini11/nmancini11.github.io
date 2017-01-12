@@ -15,7 +15,7 @@ function fixMiCharts() {
   d3.selectAll("select").remove();
   d3.selectAll(".select-style").remove();
 
-  d3.csv("/data/runandgun.csv", function(error, skaters) {
+  d3.csv("/data/runandgun2016.csv", function(error, skaters) {
     "use strict";
     if (error) {
       throw error;

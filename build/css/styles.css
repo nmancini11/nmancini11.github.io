@@ -1028,6 +1028,7 @@ nav {
   .footer ul li {
     list-style-type: none;
     display: inline;
-    margin: 10px; }
+    margin: 10px;
+    float: left; }
     .footer ul li img {
       height: 50px; }
