@@ -25,6 +25,9 @@ button, [type='button'], [type='reset'], [type='submit'], .button {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap; }
+  @media screen and (min-width: 900px) {
+    button, [type='button'], [type='reset'], [type='submit'], .button {
+      margin-bottom: 0px; } }
   button:hover, button:focus, [type='button']:hover, [type='button']:focus, [type='reset']:hover, [type='reset']:focus, [type='submit']:hover, [type='submit']:focus, .button:hover, .button:focus {
     background-color: #36995a;
     color: #fff; }
@@ -627,20 +630,19 @@ text {
       line-height: 36px;
       font-weight: bold; }
 
-#rundown {
-  height: 200px;
-  margin-top: 25px;
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 100%; }
-  #rundown:last-child {
-    margin-right: 0; }
-  @media all and (max-width: 600px) {
-    #rundown {
-      height: 660px; } }
-  #rundown .rundownTrick {
-    font-size: 14px; }
+@media screen and (min-width: 900px) {
+  #rundown {
+    height: 200px;
+    margin-top: 25px;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%; }
+    #rundown:last-child {
+      margin-right: 0; } }
+
+#rundown .rundownTrick {
+  font-size: 14px; }
 
 .highlights {
   margin-bottom: 30px; }
@@ -975,7 +977,7 @@ nav {
       width: 73.79271%;
       font-size: 16px;
       line-height: 22px;
-      padding-right: 10px;
+      padding-right: 20px;
       color: #4A4A4A; }
       .blog-posts .post-snippet .post-snippet-body p:last-child {
         margin-right: 0; }
@@ -986,14 +988,14 @@ nav {
     width: 100%; }
     .blog-posts .post-snippet .post-button:last-child {
       margin-right: 0; }
-    .blog-posts .post-snippet .post-button .button {
+    .blog-posts .post-snippet .post-button .button,
+    .blog-posts .post-snippet .post-button button {
       margin-right: 25px;
       float: right;
-      margin-bottom: 40px; }
-      @media all and (max-width: 720px) {
-        .blog-posts .post-snippet .post-button .button {
-          margin-top: 15px; } }
-      .blog-posts .post-snippet .post-button .button a {
+      margin-bottom: 40px;
+      margin-top: 0; }
+      .blog-posts .post-snippet .post-button .button a,
+      .blog-posts .post-snippet .post-button button a {
         color: #fff; }
 
 #personal-data {
@@ -1025,9 +1027,3 @@ nav {
 
 .footer {
   background: #fff; }
-  .footer ul li {
-    list-style-type: none;
-    display: inline;
-    margin: 10px; }
-    .footer ul li img {
-      height: 50px; }
