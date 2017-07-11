@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Nick Mancini</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+  <header class="navigation" role="banner">
+    <div class="navigation-wrapper container">
+      <div class="logo">
+          <h1 class="title"><a href="/index.html">NICKMANCINI.ME</a></h1>
+      </div>
+
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+      <nav role="navigation">
+        <ul id="js-navigation-menu" class="navigation-menu show">
+          <li class="nav-link"><a href="/index.html">HOME</a></li>
+          <!-- <li class="nav-link"><a href="javascript:void(0)">RESUME</a></li>
+          <li class="nav-link"><a href="javascript:void(0)">POSTS</a></li> -->
+          <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">SKATE DATA</a>
+            <ul class="submenu">
+              <li><a href="/skatedata.html">Intro</a></li>
+              <li><a href="/runandgun2016.html">Run + Gun 2016</a></li>
+              <li><a href="/runandgun2015.html">Run + Gun 2015</a></li>
+              <li><a href="/skatesense.html">Skatesense</a></li>
+              <!-- <li class="more"><a href="javascript:void(0)">Street Leage</a>
+                <ul class="submenu">
+                  <li><a href="javascript:void(0)">Super Crown LA</a></li>
+                  <li><a href="javascript:void(0)">Chicago</a></li>
+                </ul>
+              </li> -->
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <div id="runandgun" class="container">
+    <div class="page-title">
+      <h3>Skatesense</h3>
+    </div>
+
+    <div class="precourse">
+      <h4>PRECOURSE</h4>
+      <p>When you look at action sports from a statistical perspective, you quickly realize how little data is being captured. I set out on a mission to quantify competitive skateboarding by capturing the data for every trick. This all started with my first analysis on The Berrics <a href="http://theberrics.com/run-and-gun-2016">Run + Gun</a> competition.<br>
+      Over the last few months I have built a rails application for logging trick data from professional skateboarding competitions.</p>
+
+      <h4>METRICS</h4>
+      <div class="metrics">
+        <p>By logging the timestamp, stance, and trick we can derive some interesting metrics exclusive to skateboarding:</p>
+
+        <ul>
+          <li>Consecutive Flip Tricks</li>
+          <li>Breakdown of stance: Regular | Nollie | Fakie | Switch</li>
+          <li>Consecutive combinations</li>
+          <li>Flip-In + Flip-Out</li>
+        </ul>
+
+          <p>Albeit this does not paint a full picture since the obstacle the trick was done on varies greatly in difficulty throughout the park; you can start see how consistency and the caliber of tricks shapes a skaters performance.</p>
+        </div>
+    </div>
+
+    <div class="data">
+      <h5>STANCE BREAKDOWN</h5>
+      <div class="stanceChartForm">
+          <form class="stanceChart"></form>
+      </div>
+
+
+      <div class="stanceChartContainer">
+        <div id="stanceChart">
+          <!-- chart goes here -->
+        </div>
+      </div>
+
+      <div id="runChartContainer">
+        <h5>RUN SECTION</h5>
+
+        <div class="skater-list">
+          <ul class="skater-consistency-list">
+                <li class="">Shane O'Neill</li>
+                <li class="">Nyjah Huston</li>
+                <li class="">Tom Asta</li>
+                <li class="">Ryan Decenzo</li>
+                <li class="">Chris Joslin</li>
+                <li class="">Cody McEntire</li>
+                <li class="">Luan Oliveira</li>
+                <li class="">Paul Rodriguez</li>
+            </ul>
+        </div>
+        <div id="runChart">
+          <!-- chart goes here -->
+        </div>
+      </div>
+
+      <div id="consistencyChartContainer">
+        <h5>CONSISTENCY</h5>
+        <div class="skater-list">
+          <ul class="skater-consistency-list">
+                <li class="">Tom Asta</li>
+                <li class="">Ryan Decenzo</li>
+                <li class="">Nyjah Huston</li>
+                <li class="">Chris Joslin</li>
+                <li class="">Cody McEntire</li>
+                <li class="">Luan Oliveira</li>
+                <li class="">Shane O'Neill</li>
+                <li class="">Paul Rodriguez</li>
+            </ul>
+        </div>
+        <div id="consistencyChart">
+
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="highlights">
+      <h4>HIGHLIGHTS</h4>
+      <ul>
+        <li>2016: <b>Cody McEntire</b> landed <b>10</b> consecutive flip tricks</li>
+        <li>2016: <b>Paul Rodriguez</b> + <b>Tiago Lemos</b> did not attempt a single <b>regular</b> trick - 57% Switch tricks</li>
+        <li>2016: <b>Nyjah Huston</b> mobbed for <b>~70</b> seconds with 0 dismounts</li>
+        <li>2016: <b>Paul Rodriguez</b> won with <em>only</em> <b>7</b> tricks</li>
+        <li>2015: <b>Paul Rodriguez</b> won with <em>only</em> <b>6</b> tricks</li>
+        <li>2015: <b>Laun Oliveira</b> rifled through <b>14</b> tricks in <b>51</b> seconds.
+          <ul>
+            <li>6 Switch</li>
+            <li>6 Regular</li>
+            <li>2 Fakie</li>
+            <li>2 Nollie</li>
+          </ul>
+        </li>
+      </ul>
+    </div> -->
+
+
+  </div>
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/min/application-min.js"></script>
+  <script src="js/min/d3.min-min.js"></script>
+  <script type="text/javascript" src="js/skatesense.js"></script>
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+  // Changing the defaults
+  window.sr = ScrollReveal({ reset: false });
+
+  // Customizing a reveal set
+  sr.reveal('.precourse', { duration: 1000 });
+  sr.reveal('.metrics', { duration: 1000, delay: 100 });
+  sr.reveal('.stanceChartContainer', { duration: 1000, delay: 250 });
+  // sr.reveal('.personal-data', { duration: 500, delay: 200 });
+
+  sr.reveal('#consistencyChartContainer', {
+                duration: 500,
+                delay: 150,
+                afterReveal: function (domEl) {
+                  var data;
+
+                  d3.json('../data/sls-munich-finals-trick-data.json', function(error, json) {
+                      if (error) return console.warn(error);
+                      data = json;
+                      consistencyChart('consistencyChart', json);
+                  });
+                }
+              });
+
+  sr.reveal('#runChartContainer', {
+                duration: 500,
+                delay: 250,
+                afterReveal: function (domEl) {
+                  var data;
+
+                  d3.json('../data/sls-run-data.json', function(error, json) {
+                      if (error) return console.warn(error);
+                      data = json;
+                      drawRunChart('runChart', json);
+                  });
+                }
+              });
+
+
+  </script>
+
+</body>
+
+</html>
