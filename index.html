@@ -28,6 +28,7 @@
                 <li><a href="/skatedata.html">Intro</a></li>
 		            <li><a href="/runandgun2016.html">Run + Gun 2016</a></li>
                 <li><a href="/runandgun2015.html">Run + Gun 2015</a></li>
+                <li><a href="/skatesense.html">Skatesense</a></li>
 		            <!-- <li class="more"><a href="javascript:void(0)">Street Leage</a>
 		              <ul class="submenu">
 		                <li><a href="javascript:void(0)">Super Crown LA</a></li>
@@ -43,23 +44,11 @@
 
     <div class="page-wrap">
     <div class="banner">
-      <div class="container">
-          <img class="expand" src="images/expand.png" alt="expand">
-      </div>
-
-      <div class="mobile-banner">
         <div id="js-parallax-window" class="parallax-window">
-          <div class="parallax-static-content">
-            <b>Thanks for stopping by</b>
+          <div class="parallax-static-content container">
+              <!-- <b>Thanks for stopping by</b> -->
           </div>
           <div id="js-parallax-background" class="parallax-background"></div>
-        </div>
-      </div>
-
-      <div class="video-background">
-        <div class="video-foreground">
-          <iframe src="https://www.youtube.com/embed/JuwulNsJGNI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
-        </div>
       </div>
     </div>
 
@@ -69,6 +58,19 @@
         <div class="blog-posts">
           <!-- POST SNIPPET -->
           <h4>LATEST</h4>
+          <div class="post-snippet">
+              <div class="post-snippet-title">
+                <span>5/17</span><h3>Introducing Skatesense</h3>
+              </div>
+              <div class="post-snippet-body">
+                <img src="images/skatesense.png" alt="skatesense.com">
+                <p>When we look at action sports from a statistical perspective, it's easy to see how little data is being captured. I set out on a mission to quantify competitive skateboarding by capturing the data for ever trick ...</p>
+              </div>
+              <div class="post-button">
+                  <a class="button" href="/skatesense.html">Check it out</a>
+              </div>
+          </div>
+
           <div class="post-snippet">
               <div class="post-snippet-title">
                 <span>1/17</span><h3>Run + Gun Data Analyis</h3>
@@ -97,12 +99,16 @@
           </div>
         </div>
 
+        <hr>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
         <div id="personal-data" class="personal-data">
           <h4>DATA</h4>
         </div>
-
-        <hr>
-
       </div>
     </section>
   </div>
@@ -121,36 +127,10 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/min/application-min.js"></script>
     <script src="js/min/d3.min-min.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script type="text/javascript">
-      $(function() {
-        $('.expand').on("click", function(){
-          if($('.banner').height() == 400) {
-            $('.banner').animate({
-              height: 800
-            }, 500, function() {
-              // Animation complete.
-            });
-            $('.banner .container img').animate({
-              "margin-top": 410,
-            }, 500, function() {
-              // Animation complete.
-            });
-          } else {
-            $('.banner').animate({
-              height: 400
-            }, 500, function() {
-              // Animation complete.
-            });
-            $('.banner .container img').animate({
-              "margin-top": 210,
-            }, 500, function() {
-              // Animation complete.
-            });
-          }
-        });
-      });
-    </script>
-    <script type="text/javascript">
+
+    function drawPersonalData(){
       // parse date: 2016-06-24 18:57:09
       var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
 
@@ -204,21 +184,51 @@
 
               chartGroup.append("path")
                     .attr("class", "line")
-                    .attr("d",line(d.values))
-                    .style("stroke", rainbow(habitsByName.indexOf(d)));
+                    .style("stroke", rainbow(habitsByName.indexOf(d)))
+                    .attr("d",line(d.values));
 
               chartGroup.append("text")
                     .attr("class", "line-label")
-                    .attr("y",habitsByName.indexOf(d)*35)
                     .attr("x",-130)
+                    .attr("opacity",0)
+                    .transition().ease(d3.easeCubic).duration(500).delay(0)
+                    .attr("opacity",1)
+                    .attr("y",habitsByName.indexOf(d)*35)
                     .style("stroke", rainbow(habitsByName.indexOf(d)))
                     .text(d.key);
             });
 
-            chartGroup.append("g").attr("class","x axis").attr("transform","translate(0,"+height+")").call(xAxis);
-            chartGroup.append("g").attr("class","y axis").call(yAxis);
+            chartGroup.append("g")
+                    .attr("class","x axis")
+                    .attr("transform","translate(0,"+height+")")
+                    .call(xAxis)
+                    .attr("opacity",0)
+                    .transition().ease(d3.easeCubic).duration(1000).delay(0)
+                    .attr("opacity",1);
+            chartGroup.append("g")
+                    .attr("class","y axis")
+                    .call(yAxis).attr("opacity",0)
+                    .transition().ease(d3.easeCubic).duration(1000).delay(0)
+                    .attr("opacity",1);;
 
       });
+    }
+    </script>
+
+    <script type="text/javascript">
+    // Changing the defaults
+    window.sr = ScrollReveal({ reset: false });
+
+    // Customizing a reveal set
+    sr.reveal('.post-snippet', { duration: 500 }, 50);
+    // sr.reveal('.personal-data', { duration: 500, delay: 200 });
+
+    sr.reveal('.personal-data', {
+                  duration: 500,
+                  delay: 50,
+                  afterReveal: function (domEl) { drawPersonalData(); }
+                });
+
     </script>
   </body>
 </html>

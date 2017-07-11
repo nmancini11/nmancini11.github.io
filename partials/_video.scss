@@ -1,11 +1,12 @@
 .banner {
-  height: 400px;
+  height: 350px;
+  margin-top: 100px;
 
   .container {
     padding: 20px;
     @include outer-container;
     background: none;
-    height: 300px;
+    height: 350px;
 
     img {
       margin-top: 210px;
@@ -62,16 +63,17 @@
 @media all and (max-width: 685px) {
   .video-background, .video-foreground, .expand {
     height: 0;
-    display: none;
+    // display: none;
   }
 
   .banner {
-    height: 200px;
-    margin-top: 100px;
+    height: 300px;
+    margin-top: 60px;
+    overflow: hidden;
 
 
     .container {
-      display: none;
+      // display: none;
     }
 
     .mobile-banner {

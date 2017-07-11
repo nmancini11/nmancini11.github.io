@@ -1,12 +1,15 @@
-@import "bourbon";
-@import "neat/neat";
+@import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
 @import "base/base";
+@import "../node_modules/neat/neat";
 @import "../partials/nav";
 @import "../partials/video";
 @import "../partials/personal-data-chart";
 @import "../partials/runandgun";
 @import "../partials/parallax";
-@import "../partials/fadein"; // RESET
+@import "../partials/charts";
+@import "../partials/tooltip";
+
+// RESET
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -184,8 +187,9 @@ nav {
 }
 
 .blog-posts {
+
     @include media($large-screen) {
-         @include span-columns(6);
+         @include span-columns(8);
     }
     @media all and (max-width: $medium-screen) {
          @include media($medium-screen){
@@ -196,6 +200,8 @@ nav {
     margin-top: 0;
 
     .post-snippet {
+      // hiding blog-posts for ScrollReveal
+      visibility: hidden;
         .post-snippet-title {
             @include span-columns(6 of 6);
 
@@ -217,7 +223,7 @@ nav {
         }
 
         .post-snippet-body {
-            height: 155px;
+            // height: 155px;
 
             img {
                 @include span-columns(1.5 of 6);
@@ -259,7 +265,7 @@ nav {
         float: left;
     }
     @include media($large-screen) {
-         @include span-columns(6);
+         @include span-columns(12);
         margin-right: 0;
     }
     @media all and (max-width: $medium-screen) {

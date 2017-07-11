@@ -1,4 +1,4 @@
-$parallax-window-height: 200px;
+$parallax-window-height: 400px;
 $parallax-background-height: $parallax-window-height * 2;
 
 .parallax-window {
@@ -18,7 +18,7 @@ $parallax-background-height: $parallax-window-height * 2;
 }
 
 .parallax-background {
-  background: url("/images/mobile-background.jpg") repeat;
+  background: url("/images/background-1080.gif") no-repeat;
   background-position: top;
   background-size: cover;
   background-color: beige;

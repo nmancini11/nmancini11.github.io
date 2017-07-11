@@ -1,0 +1,370 @@
+{
+  "29": {
+    "makes": 13,
+    "bails": 4,
+    "tricks": [
+      "Switch 5-0 + FS 180",
+      "Nollie Heelflip + BS Crook",
+      "FS 180 Kickflip",
+      "Switch BS 5-0",
+      "Switch Heelflip + FS Boardslide",
+      "Nollie Heelflip + BS Crook",
+      "FS 180 Kickflip",
+      "Switch BS 5-0",
+      "Kickflip + BS Nosegrind",
+      "Switch 5-0 + FS 180",
+      "Switch Heelflip + BS 5-0",
+      "Switch BS 180 Heelflip",
+      "Nollie Heelflip + BS Noseblunt"
+    ],
+    "regularTricks": 5,
+    "fakieTricks": 1,
+    "switchTricks": 8,
+    "nollieTricks": 6,
+    "scores": [
+      7.3,
+      6.8,
+      7.9,
+      6.9,
+      0,
+      9.3,
+      0
+    ],
+    "skater": [
+      {
+        "id": 29,
+        "name": "Tom Asta",
+        "stance": "Regular",
+        "dob": "1990-01-12T00:00:00.000Z",
+        "gender": "male",
+        "created_at": "2017-05-13T13:49:36.423Z",
+        "updated_at": "2017-05-13T13:49:36.423Z"
+      }
+    ],
+    "consistency": 76.5
+  },
+  "34": {
+    "makes": 11,
+    "bails": 7,
+    "tricks": [
+      "BS Smith Grind",
+      "FS Noseblunt",
+      "FS Tailslide",
+      "Gap + FS Lipslide",
+      "BS Smith",
+      "FS Noseblunt",
+      "FS Bluntslide",
+      "FS Tailslide",
+      "BS 50-50",
+      "Gap + FS Lipslide",
+      "Gap + FS Tailslide"
+    ],
+    "regularTricks": 16,
+    "fakieTricks": 1,
+    "switchTricks": 3,
+    "nollieTricks": 1,
+    "scores": [
+      5.2,
+      5.7,
+      8.2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "skater": [
+      {
+        "id": 34,
+        "name": "Ryan Decenzo",
+        "stance": "Regular",
+        "dob": "1986-07-20T00:00:00.000Z",
+        "gender": "male",
+        "created_at": "2017-05-13T13:56:20.720Z",
+        "updated_at": "2017-05-13T13:56:20.720Z"
+      }
+    ],
+    "consistency": 61.1
+  },
+  "38": {
+    "makes": 20,
+    "bails": 4,
+    "tricks": [
+      "BS 180 + Nosegrind",
+      "Full Cab + FS Boardslide",
+      "360 Flip",
+      "BS Tailslide",
+      "BS 5-0 + FS 180",
+      "FS Halfcab Kickflip",
+      "Fakie Kickflip",
+      "BS Halfcab + Crook",
+      "Gap + FS Lipslide",
+      "BS 180 Kickflip",
+      "BS 180 + Nosegrind",
+      "Full Cab + FS Boardslide",
+      "360 Flip",
+      "BS Tailslide",
+      "BS 5-0 + FS 180",
+      "BS Halfcab Kickflip",
+      "Fakie Kickflip",
+      "Halfcab + BS Krooked Grind",
+      "Gap + FS Noseblunt",
+      "Gap + Kickflip + FS Boardslide"
+    ],
+    "regularTricks": 17,
+    "fakieTricks": 8,
+    "switchTricks": 1,
+    "nollieTricks": 1,
+    "scores": [
+      8.5,
+      8,
+      8.8,
+      9.3,
+      0,
+      0,
+      0
+    ],
+    "skater": [
+      {
+        "id": 38,
+        "name": "Nyjah Huston",
+        "stance": "Goofy",
+        "dob": "1994-11-30T00:00:00.000Z",
+        "gender": "male",
+        "created_at": "2017-05-13T14:00:20.649Z",
+        "updated_at": "2017-05-13T14:00:20.649Z"
+      }
+    ],
+    "consistency": 83.3
+  },
+  "40": {
+    "makes": 17,
+    "bails": 5,
+    "tricks": [
+      "FS Lipslide",
+      "FS Alley Oop",
+      "Heelflip",
+      "Kickflip + FS Crook",
+      "FS Tailslide",
+      "Gap + BS Lipslide",
+      "360 Flip",
+      "No Comply Bigspin Heelflip",
+      "Switch FS 180",
+      "Ollie to Fakie",
+      "BS 180 Kickflip",
+      "Kickflip + FS 50-50",
+      "BS Bigspin + FS Boardslide",
+      "Heelflip",
+      "FS Crook",
+      "BS 360",
+      "Ollie to Fakie"
+    ],
+    "regularTricks": 21,
+    "fakieTricks": 1,
+    "switchTricks": 2,
+    "nollieTricks": 1,
+    "scores": [
+      9,
+      9.2,
+      0,
+      0,
+      0,
+      9.5,
+      0
+    ],
+    "skater": [
+      {
+        "id": 40,
+        "name": "Chris Joslin",
+        "stance": "Regular",
+        "dob": "1996-03-10T00:00:00.000Z",
+        "gender": "male",
+        "created_at": "2017-05-13T14:50:06.846Z",
+        "updated_at": "2017-05-13T14:50:06.846Z"
+      }
+    ],
+    "consistency": 77.3
+  },
+  "44": {
+    "makes": 12,
+    "bails": 3,
+    "tricks": [
+      "Nollie BS Bigspin",
+      "BS 180 Kickflip",
+      "Switch Kickflip",
+      "BS Tailslide",
+      "Nollie Big Heelflip",
+      "Nollie BS Bigspin",
+      "Switch Kickflip",
+      "Nollie BS Bigspin",
+      "BS 180 Kickflip",
+      "Switch Kickflip + BS Lipslide",
+      "Switch Kickflip",
+      "Nollie Big Heelflip"
+    ],
+    "regularTricks": 7,
+    "fakieTricks": 1,
+    "switchTricks": 6,
+    "nollieTricks": 4,
+    "scores": [
+      6.9,
+      3.1,
+      8,
+      8,
+      8.3,
+      8.8,
+      9.3
+    ],
+    "skater": [
+      {
+        "id": 44,
+        "name": "Cody McEntire",
+        "stance": "Regular",
+        "dob": "1987-10-18T00:00:00.000Z",
+        "gender": "male",
+        "created_at": "2017-05-13T14:52:48.098Z",
+        "updated_at": "2017-05-13T14:52:48.098Z"
+      }
+    ],
+    "consistency": 80
+  },
+  "45": {
+    "makes": 17,
+    "bails": 5,
+    "tricks": [
+      "360 Flip",
+      "Nollie Krook + Fakie",
+      "Nollie FS 180 + Crook",
+      "Switch 360 Flip",
+      "Kickflip",
+      "Switch FS 180 Kickflip",
+      "Kickflip + FS Disaster",
+      "360 Flip",
+      "Nollie Crook + Fakie",
+      "Nollie FS 180 + Switch Crook",
+      "Switch 360 Flip",
+      "Switch FS 180 Kickflip",
+      "BS 180 Kickflip",
+      "BS 180 Kickflip",
+      "Kickflip",
+      "BS 180 Kickflip",
+      "FS 180 Kickflip"
+    ],
+    "regularTricks": 12,
+    "fakieTricks": 1,
+    "switchTricks": 6,
+    "nollieTricks": 6,
+    "scores": [
+      7.9,
+      6.7,
+      8.2,
+      0,
+      0,
+      9.1,
+      8.3
+    ],
+    "skater": [
+      {
+        "id": 45,
+        "name": "Luan Oliveira",
+        "stance": "Regular",
+        "dob": "1990-09-22T00:00:00.000Z",
+        "gender": "male",
+        "created_at": "2017-05-13T14:53:30.209Z",
+        "updated_at": "2017-05-13T14:53:30.209Z"
+      }
+    ],
+    "consistency": 77.3
+  },
+  "46": {
+    "makes": 17,
+    "bails": 4,
+    "tricks": [
+      "360 Flip",
+      "Nollie BS Crook",
+      "BS Crook + Nollie Kickflip",
+      "BS Bigspin + FS Boardslide",
+      "BS Tailslide",
+      "BS Bigspin + BS Tailslide",
+      "360 Flip",
+      "Nollie BS Crook",
+      "BS Crook + Nollie Kickflip",
+      "Switch FS Bigspin",
+      "BS Tailslide",
+      "BS Bigspin + FS Boardslide",
+      "BS Bigspin + BS Tailslide",
+      "Nollie Heelflip",
+      "Switch 360 Flip + FS Lipslide",
+      "Switch Bigflip + FS Boardslide",
+      "Nollie 360 Flip + FS Boardslide"
+    ],
+    "regularTricks": 11,
+    "fakieTricks": 1,
+    "switchTricks": 7,
+    "nollieTricks": 5,
+    "scores": [
+      8.2,
+      9,
+      9,
+      0,
+      9,
+      9.4,
+      0
+    ],
+    "skater": [
+      {
+        "id": 46,
+        "name": "Shane O'Neill",
+        "stance": "Goofy",
+        "dob": "1990-01-03T00:00:00.000Z",
+        "gender": "male",
+        "created_at": "2017-05-13T14:53:55.367Z",
+        "updated_at": "2017-05-13T14:53:55.367Z"
+      }
+    ],
+    "consistency": 81
+  },
+  "51": {
+    "makes": 13,
+    "bails": 5,
+    "tricks": [
+      "FS Bluntslide",
+      "Switch BS Crook",
+      "Switch BS Smith",
+      "Nollie BS Crook",
+      "Switch Kickflip",
+      "Switch Kickflip + FS Boardslide",
+      "FS 5-0",
+      "Switch FS Bluntslide",
+      "Switch Kickflip",
+      "Switch Kickflip + FS Boardslide",
+      "Switch BS Crook",
+      "Nollie FS 270 + Lipslide",
+      "Nollie BS Crook + Nollie Heelflip"
+    ],
+    "regularTricks": 4,
+    "fakieTricks": 1,
+    "switchTricks": 11,
+    "nollieTricks": 5,
+    "scores": [
+      8,
+      6.5,
+      0,
+      8.2,
+      9.2,
+      0,
+      0
+    ],
+    "skater": [
+      {
+        "id": 51,
+        "name": "Paul Rodriguez",
+        "stance": "Goofy",
+        "dob": "1984-12-31T00:00:00.000Z",
+        "gender": "male",
+        "created_at": "2017-05-13T15:00:02.739Z",
+        "updated_at": "2017-05-13T15:00:02.739Z"
+      }
+    ],
+    "consistency": 72.2
+  }
+}
