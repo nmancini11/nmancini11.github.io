@@ -8,7 +8,6 @@
 @import "../partials/parallax";
 @import "../partials/charts";
 @import "../partials/tooltip";
-
 // RESET
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -187,9 +186,8 @@ nav {
 }
 
 .blog-posts {
-
     @include media($large-screen) {
-         @include span-columns(8);
+         @include span-columns(12);
     }
     @media all and (max-width: $medium-screen) {
          @include media($medium-screen){
@@ -199,59 +197,76 @@ nav {
     }
     margin-top: 0;
 
-    .post-snippet {
-      // hiding blog-posts for ScrollReveal
-      visibility: hidden;
-        .post-snippet-title {
-            @include span-columns(6 of 6);
+    .post-container {
+        @include span-columns(12);
+        .post-snippet {
+            // hiding blog-posts for ScrollReveal
+            visibility: hidden;
+            @include span-columns(12);
 
-            span {
-                float: left;
-                line-height: 36px;
-                font-size: 22px;
-                color: #4A4A4A;
-                margin-right: 15px;
+            @include media($medium-screen){
+              @include span-columns(4);
             }
 
-            h3 {
-                font-size: 24px;
-                line-height: 36px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
 
-        .post-snippet-body {
-            // height: 155px;
+            .post-snippet-title {
+                @include span-columns(6 of 6);
 
-            img {
-                @include span-columns(1.5 of 6);
-            }
-
-            p {
-                @include span-columns(4.5 of 6);
-                font-size: 16px;
-                line-height: 22px;
-                padding-right: 10px;
-                color: #4A4A4A;
-            }
-        }
-
-        .post-button {
-            @include span-columns(6 of 6);
-
-            .button {
-                margin-right: 25px;
-                // @include span-columns(3);
-                float: right;
-                margin-bottom: 40px;
-                @media all and (max-width: 720px) {
-                  margin-top: 15px;
+                span {
+                    float: left;
+                    line-height: 36px;
+                    font-size: 22px;
+                    color: #4A4A4A;
+                    margin-right: 15px;
                 }
 
-                a {
-                    color: #fff;
+                h3 {
+                    font-size: 24px;
+                    line-height: 36px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .post-snippet-body {
+                // height: 155px;
+                img {
+                    @include span-columns(2 of 6);
+                    margin-top: 5px;
+                }
+
+                p {
+                    @include span-columns(4 of 6);
+                    font-size: 16px;
+                    line-height: 22px;
+                    padding-right: 0px;
+                    color: #4A4A4A;
+                    margin-top: 5px;
+                    height: 150px;
+
+                    @include media($medium-screen){
+                      height: 190px;
+                    }
+                }
+            }
+
+            .post-button {
+                @include span-columns(6 of 6);
+                margin-top: 10px;
+
+                .button {
+                    margin-right: 25px;
+                    // @include span-columns(3);
+                    float: right;
+                    margin-bottom: 40px;
+                    @media all and (max-width: 720px) {
+                        margin-top: 15px;
+                    }
+
+                    a {
+                        color: #fff;
+                    }
                 }
             }
         }
@@ -296,13 +311,13 @@ nav {
     background: #fff;
 
     ul li {
-      list-style-type: none;
-      display: inline;
-      margin: 10px;
-      float: left;
+        list-style-type: none;
+        display: inline;
+        margin: 10px;
+        float: left;
 
-      img {
-        height: 50px;
-      }
+        img {
+            height: 50px;
+        }
     }
 }

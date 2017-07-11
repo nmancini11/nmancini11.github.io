@@ -67,14 +67,15 @@
   }
 
   .banner {
-    height: 300px;
+    height: 220px;
     margin-top: 60px;
     overflow: hidden;
 
-
-    .container {
-      // display: none;
+    @include media($medium-screen){
+      height: 300px;
+      margin-top: 60px;
     }
+
 
     .mobile-banner {
       height: 200px;

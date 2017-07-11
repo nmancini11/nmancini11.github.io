@@ -58,43 +58,46 @@
         <div class="blog-posts">
           <!-- POST SNIPPET -->
           <h4>LATEST</h4>
-          <div class="post-snippet">
+          <div class="post-container">
+
+            <div class="post-snippet">
+                <div class="post-snippet-title">
+                  <span>5/17</span><h3>Introducing Skatesense</h3>
+                </div>
+                <div class="post-snippet-body">
+                  <img src="images/skatesense.png" alt="skatesense.com">
+                  <p>When we look at action sports from a statistical perspective, it's easy to see how little data is being captured. I set out on a mission to quantify competitive skateboarding...</p>
+                </div>
+                <div class="post-button">
+                    <a class="button" href="/skatesense.html">Check it out</a>
+                </div>
+            </div>
+
+            <div class="post-snippet">
+                <div class="post-snippet-title">
+                  <span>1/17</span><h3>Run + Gun Data Analyis</h3>
+                </div>
+                <div class="post-snippet-body">
+                  <img src="images/RUN+GUN.png" alt="Run + Gun">
+                  <p>For the last three years, The Berrics has hosted a 60 second contest known as Run + Gun. Each skater gets the whole park to themselves for 24 hours to come up with the best 60 secnd run...</p>
+                </div>
+                <div class="post-button">
+                    <a class="button" href="/runandgun2016.html">Check it out</a>
+                </div>
+            </div>
+
+            <!-- POST SNIPPET -->
+            <div class="post-snippet">
               <div class="post-snippet-title">
-                <span>5/17</span><h3>Introducing Skatesense</h3>
+                <span>12/16</span><h3>Run + Gun Skate Data</h3>
               </div>
               <div class="post-snippet-body">
-                <img src="images/skatesense.png" alt="skatesense.com">
-                <p>When we look at action sports from a statistical perspective, it's easy to see how little data is being captured. I set out on a mission to quantify competitive skateboarding by capturing the data for ever trick ...</p>
+                <img src="images/runandgun-logo.png" alt="Run + Gun">
+                <p>Recently I’ve been exploring data collection methods for competitive skateboarding. While I admit skateboarding is as much of an art form as it is a competitive sport ...</p>
               </div>
               <div class="post-button">
-                  <a class="button" href="/skatesense.html">Check it out</a>
+                  <a class="button" href="/skatedata.html">Check it out</a>
               </div>
-          </div>
-
-          <div class="post-snippet">
-              <div class="post-snippet-title">
-                <span>1/17</span><h3>Run + Gun Data Analyis</h3>
-              </div>
-              <div class="post-snippet-body">
-                <img src="images/RUN+GUN.png" alt="Run + Gun">
-                <p>For the last three years, The Berrics has hosted a 60 second contest known as Run + Gun. Each skater gets the whole park to themselves for 24 hours to come up with the best 60 secnd run...</p>
-              </div>
-              <div class="post-button">
-                  <a class="button" href="/runandgun2016.html">Check it out</a>
-              </div>
-          </div>
-
-          <!-- POST SNIPPET -->
-          <div class="post-snippet">
-            <div class="post-snippet-title">
-              <span>12/16</span><h3>Run + Gun Skate Data</h3>
-            </div>
-            <div class="post-snippet-body">
-              <img src="images/runandgun-logo.png" alt="Run + Gun">
-              <p>Recently I’ve been exploring data collection methods for competitive skateboarding. While I admit skateboarding is as much of an art form as it is a competitive sport ...</p>
-            </div>
-            <div class="post-button">
-                <a class="button" href="/skatedata.html">Check it out</a>
             </div>
           </div>
         </div>
@@ -116,10 +119,11 @@
       <div class="container">
         <h4>FOLLOW ME</h4>
         <ul>
-          <li class="social-icon"><a href="https://instagram.com/stokesperson"><img src="images/instagram.png" alt="Instagram"></a></li>
-          <li class="social-icon"><a href="https://www.facebook.com/nmancini11"></a><img src="images/facebook.png" alt=""></li>
-          <li class="social-icon"><a href="https://www.youtube.com/channel/UCtb_GJjvayoVVEM-XJS5rgA"><img src="images/youtube.png" alt=""></a></li>
-          <li class="social-icon"><a href="https://www.linkedin.com/in/nick-mancini-4530141a"><img src="images/linkedin.png" alt="linkedin"></a></li>
+          <li class="social-icon"><a href="https://instagram.com/stokesperson" target="blank"><img src="images/instagram.png" alt="Instagram"></a></li>
+          <li class="social-icon"><a href="https://github.com/nmancini11" target="blank"><img src="images/github.png" alt="Github"></a></li>
+          <li class="social-icon"><a href="https://www.facebook.com/nmancini11" target="blank"><img src="images/facebook.png" alt=""></a></li>
+          <li class="social-icon"><a href="https://www.youtube.com/channel/UCtb_GJjvayoVVEM-XJS5rgA" target="blank"><img src="images/youtube.png" alt=""></a></li>
+          <li class="social-icon"><a href="https://www.linkedin.com/in/nick-mancini-4530141a" target="blank"><img src="images/linkedin.png" alt="linkedin"></a></li>
         </ul>
       </div>
     </footer>
@@ -220,7 +224,7 @@
     window.sr = ScrollReveal({ reset: false });
 
     // Customizing a reveal set
-    sr.reveal('.post-snippet', { duration: 500 }, 50);
+    sr.reveal('.social-icon', { duration: 500 }, 50);
     // sr.reveal('.personal-data', { duration: 500, delay: 200 });
 
     sr.reveal('.personal-data', {
@@ -228,6 +232,8 @@
                   delay: 50,
                   afterReveal: function (domEl) { drawPersonalData(); }
                 });
+
+    sr.reveal('.post-snippet', { duration: 500, delay: 150 }, 50);
 
     </script>
   </body>

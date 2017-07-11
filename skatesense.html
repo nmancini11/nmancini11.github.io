@@ -56,7 +56,7 @@
       Over the last few months I have built a rails application for logging trick data from professional skateboarding competitions.</p>
 
       <h4>METRICS</h4>
-
+      <div class="metrics">
         <p>By logging the timestamp, stance, and trick we can derive some interesting metrics exclusive to skateboarding:</p>
 
         <ul>
@@ -67,7 +67,7 @@
         </ul>
 
           <p>Albeit this does not paint a full picture since the obstacle the trick was done on varies greatly in difficulty throughout the park; you can start see how consistency and the caliber of tricks shapes a skaters performance.</p>
-
+        </div>
     </div>
 
     <div class="data">
@@ -154,6 +154,47 @@
   <script type="text/javascript" src="js/min/application-min.js"></script>
   <script src="js/min/d3.min-min.js"></script>
   <script type="text/javascript" src="js/skatesense.js"></script>
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+  // Changing the defaults
+  window.sr = ScrollReveal({ reset: false });
+
+  // Customizing a reveal set
+  sr.reveal('.precourse', { duration: 1000 });
+  sr.reveal('.metrics', { duration: 1000, delay: 100 });
+  sr.reveal('.stanceChartContainer', { duration: 1000, delay: 250 });
+  // sr.reveal('.personal-data', { duration: 500, delay: 200 });
+
+  sr.reveal('#consistencyChartContainer', {
+                duration: 500,
+                delay: 150,
+                afterReveal: function (domEl) {
+                  var data;
+
+                  d3.json('../data/sls-munich-finals-trick-data.json', function(error, json) {
+                      if (error) return console.warn(error);
+                      data = json;
+                      consistencyChart('consistencyChart', json);
+                  });
+                }
+              });
+
+  sr.reveal('#runChartContainer', {
+                duration: 500,
+                delay: 250,
+                afterReveal: function (domEl) {
+                  var data;
+
+                  d3.json('../data/sls-run-data.json', function(error, json) {
+                      if (error) return console.warn(error);
+                      data = json;
+                      drawRunChart('runChart', json);
+                  });
+                }
+              });
+
+
+  </script>
 
 </body>
 

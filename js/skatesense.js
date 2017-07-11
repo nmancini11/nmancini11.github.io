@@ -1,22 +1,20 @@
-
-
 var data;
 
 d3.json('../data/sls-munich-finals-trick-data.json', function(error, json) {
-  if (error) return console.warn(error);
-  data = json;
+    if (error) return console.warn(error);
+    data = json;
 
-  stanceDonutChart('stanceChart', json);
-  consistencyChart('consistencyChart', json);
-  // runChart('runChart', json);
-  console.log(json);
+    stanceDonutChart('stanceChart', json);
+    // consistencyChart('consistencyChart', json);
+    // runChart('runChart', json);
+    console.log(json);
 });
 
-d3.json('../data/sls-run-data.json', function(error, json) {
-  if (error) return console.warn(error);
-  data = json;
-  drawRunChart('runChart', json);
-});
+// d3.json('../data/sls-run-data.json', function(error, json) {
+//     if (error) return console.warn(error);
+//     data = json;
+//     drawRunChart('runChart', json);
+// });
 
 // donut chart / stance chart
 function stanceDonutChart(div, data) {
@@ -33,7 +31,7 @@ function stanceDonutChart(div, data) {
 
     var firstTime = true;
 
-    var color = ["#9BCFE6","#0079B9","#A5E17F","#00A400"];
+    var color = ["#9BCFE6", "#0079B9", "#A5E17F", "#00A400"];
     var pie = d3.pie()
         .value(function(d) {
             return d.count;
@@ -272,10 +270,10 @@ function stanceDonutChart(div, data) {
 
 function drawRunChart(div, data) {
 
-  console.log(data);
+    console.log(data);
     // set ze variables
-    var width = $('#'+div).width(),
-        height = $('#'+div).height(),
+    var width = $('#' + div).width(),
+        height = $('#' + div).height(),
         max = 44;
     // console.log("width: " + width);
     // set ze axis
@@ -294,91 +292,91 @@ function drawRunChart(div, data) {
     var t = 0;
 
     var div = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
     for (var key in data) {
 
-      var currentSkater = data[key];
+        var currentSkater = data[key];
 
-    x = d3.scaleLinear()
-        .domain([0, max])
-        .rangeRound([0, width])
-        .nice();
+        x = d3.scaleLinear()
+            .domain([0, max])
+            .rangeRound([0, width])
+            .nice();
 
-    xAxis = d3.axisBottom(x).ticks(0);
+        xAxis = d3.axisBottom(x).ticks(0);
 
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(" + 0 + "," + t*20 + ")")
-        .attr("stroke", "#fff")
-        .attr("stroke-width", "7")
-        .style("fill", "#50D1E3")
-        .call(xAxis)
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(" + 0 + "," + t * 20 + ")")
+            .attr("stroke", "#fff")
+            .attr("stroke-width", "7")
+            .style("fill", "#50D1E3")
+            .call(xAxis)
 
 
-    for (var i = 0; i < currentSkater["Run 1"].length; i++) {
-        var position = (currentSkater["Run 1"][0].timestamp+max - currentSkater["Run 1"][i].timestamp)-max;
-        // check if the trick is a bail or land
-        if (currentSkater["Run 1"][i].bail) {
-            // add an X
-            svg.append('polyline').attr('points', '4,4 8,8 12,4 16,8 12,12 16,16 12,20 8,16 4,20 0,16 4,12 0,8 4,4').style("fill", "#E36640").style("stroke", "none").attr("transform", "translate(" + 0 + "," + ((t*20)-10) + ")").transition().duration(750).delay(150).attr("transform", "translate(" + -(x(position)-15) + "," + ((t*20)-7)+ ")");
-        } else {
-            // circle dat sheeiit
-            svg.append("circle").style("stroke", "#none").style("fill", "#fff").attr("stroke","#368195").attr("transform", "translate(" + 0 + "," + ((t*20)) + ")").attr("cx", 0).attr("cy", "5").attr("r", "5").on("mouseover", function(d) {
-               div.transition()
-                 .duration(200)
-                 .style("opacity", .9);
-               div.html("<p>"+currentSkater["Run 1"][i].name+"</p>")
-                 .style("left", (d3.event.pageX - 30) + "px")
-                 .style("top", (d3.event.pageY - 40) + "px");
-               })
-             .on("mouseout", function(d) {
-               div.transition()
-                 .duration(500)
-                 .style("opacity", 0);
-               })
-               .transition().duration(750).delay(150).attr("transform", "translate(" + -(x(position)-15) + "," + ((t*20))+ ")");
+        for (var i = 0; i < currentSkater["Run 1"].length; i++) {
+            var position = (currentSkater["Run 1"][0].timestamp + max - currentSkater["Run 1"][i].timestamp) - max;
+            // check if the trick is a bail or land
+            if (currentSkater["Run 1"][i].bail) {
+                // add an X
+                svg.append('polyline').attr('points', '4,4 8,8 12,4 16,8 12,12 16,16 12,20 8,16 4,20 0,16 4,12 0,8 4,4').style("fill", "#E36640").style("stroke", "none").attr("transform", "translate(" + 0 + "," + ((t * 20) - 10) + ")").transition().duration(750).delay(150).attr("transform", "translate(" + -(x(position) - 15) + "," + ((t * 20) - 7) + ")");
+            } else {
+                // circle dat sheeiit
+                svg.append("circle").style("stroke", "#none").style("fill", "#fff").attr("stroke", "#368195").attr("transform", "translate(" + 0 + "," + ((t * 20)) + ")").attr("cx", 0).attr("cy", "5").attr("r", "5").on("mouseover", function(d) {
+                        div.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                        div.html("<p>" + currentSkater["Run 1"][i].name + "</p>")
+                            .style("left", (d3.event.pageX - 30) + "px")
+                            .style("top", (d3.event.pageY - 40) + "px");
+                    })
+                    .on("mouseout", function(d) {
+                        div.transition()
+                            .duration(500)
+                            .style("opacity", 0);
+                    })
+                    .transition().duration(750).delay(150).attr("transform", "translate(" + -(x(position) - 15) + "," + ((t * 20)) + ")");
+            }
         }
-    }
 
-    t+=1;
+        t += 1;
 
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(" + 0 + "," + t*20 + ")")
-        .attr("stroke", "#fff")
-        .attr("stroke-width", "7")
-        .style("fill", "#50D1E3")
-        .call(xAxis);
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(" + 0 + "," + t * 20 + ")")
+            .attr("stroke", "#fff")
+            .attr("stroke-width", "7")
+            .style("fill", "#50D1E3")
+            .call(xAxis);
 
-    for (var i = 0; i < currentSkater["Run 2"].length; i++) {
-        var position = (currentSkater["Run 2"][0].timestamp+max - currentSkater["Run 2"][i].timestamp)-max;
-        // check if the trick is a bail or land
-        if (currentSkater["Run 2"][i].bail) {
-            // add an X
-            svg.append('polyline').attr('points', '4,4 8,8 12,4 16,8 12,12 16,16 12,20 8,16 4,20 0,16 4,12 0,8 4,4').style("fill", "#E36640").style("stroke", "none").attr("transform", "translate(" + 0 + "," + ((t*20)-10) + ")").transition().duration(750).delay(150).attr("transform", "translate(" + -(x(position)-15) + "," + ((t*20)-7)+ ")");
-        } else {
-            // circle dat sheeiit
-            svg.append("circle").style("stroke", "#none").style("fill", "#fff").attr("stroke","#368195").attr("transform", "translate(" + 0 + "," + ((t*20)) + ")").attr("cx", 0).attr("cy", "5").attr("r", "5").on("mouseover", function(d) {
-               div.transition()
-                 .duration(200)
-                 .style("opacity", .9);
-               div.html("<p>"+currentSkater["Run 2"][i].name+"</p>")
-                 .style("left", (d3.event.pageX - 30) + "px")
-                 .style("top", (d3.event.pageY - 40) + "px");
-               })
-             .on("mouseout", function(d) {
-               div.transition()
-                 .duration(500)
-                 .style("opacity", 0);
-               })
-               .transition().duration(750).delay(150).attr("transform", "translate(" + -(x(position)-15) + "," + ((t*20))+ ")");
+        for (var i = 0; i < currentSkater["Run 2"].length; i++) {
+            var position = (currentSkater["Run 2"][0].timestamp + max - currentSkater["Run 2"][i].timestamp) - max;
+            // check if the trick is a bail or land
+            if (currentSkater["Run 2"][i].bail) {
+                // add an X
+                svg.append('polyline').attr('points', '4,4 8,8 12,4 16,8 12,12 16,16 12,20 8,16 4,20 0,16 4,12 0,8 4,4').style("fill", "#E36640").style("stroke", "none").attr("transform", "translate(" + 0 + "," + ((t * 20) - 10) + ")").transition().duration(750).delay(150).attr("transform", "translate(" + -(x(position) - 15) + "," + ((t * 20) - 7) + ")");
+            } else {
+                // circle dat sheeiit
+                svg.append("circle").style("stroke", "#none").style("fill", "#fff").attr("stroke", "#368195").attr("transform", "translate(" + 0 + "," + ((t * 20)) + ")").attr("cx", 0).attr("cy", "5").attr("r", "5").on("mouseover", function(d) {
+                        div.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                        div.html("<p>" + currentSkater["Run 2"][i].name + "</p>")
+                            .style("left", (d3.event.pageX - 30) + "px")
+                            .style("top", (d3.event.pageY - 40) + "px");
+                    })
+                    .on("mouseout", function(d) {
+                        div.transition()
+                            .duration(500)
+                            .style("opacity", 0);
+                    })
+                    .transition().duration(750).delay(150).attr("transform", "translate(" + -(x(position) - 15) + "," + ((t * 20)) + ")");
+            }
+
         }
-        // console.log("Run Id: "+data[key][i].run_id + " = " +parseInt(data[key][0].timestamp+max)+ " - " +data[key][i].timestamp+ " ... position: "+position);
+        t += 2;
     }
-    t+=2;
-  }
 };
 
 
