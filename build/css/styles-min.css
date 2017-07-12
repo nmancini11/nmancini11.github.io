@@ -491,7 +491,7 @@ header.navigation {
   .video-background, .video-foreground, .expand {
     height: 0; }
   .banner {
-    height: 300px;
+    height: 220px;
     margin-top: 60px;
     overflow: hidden; }
     .banner .mobile-banner {
@@ -785,7 +785,7 @@ svg path.line {
     display: inline-block;
     width: 150px;
     margin: 5px; }
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     .stanceChartForm {
       float: left;
       display: block;
@@ -818,7 +818,7 @@ svg path.line {
   margin: 40px auto; }
   #stanceChart:last-child {
     margin-right: 0; }
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     #stanceChart {
       float: left;
       display: block;
@@ -857,7 +857,7 @@ svg path.line {
     height: 520px; }
     #runChartContainer #runChart:last-child {
       margin-right: 0; }
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 768px) {
       #runChartContainer #runChart {
         float: left;
         display: block;
@@ -876,7 +876,7 @@ svg path.line {
     margin-right: 5px; }
     #runChartContainer .skater-list:last-child {
       margin-right: 0; }
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 768px) {
       #runChartContainer .skater-list {
         float: left;
         display: block;
@@ -916,7 +916,7 @@ svg path.line {
   margin-right: 5px; }
   .skater-list:last-child {
     margin-right: 0; }
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     .skater-list {
       float: left;
       display: block;
@@ -1108,64 +1108,92 @@ nav {
       float: left;
       display: block;
       margin-right: 2.35765%;
-      width: 65.88078%; }
+      width: 100%; }
       .blog-posts:last-child {
         margin-right: 0; } }
-  .blog-posts .post-snippet {
-    visibility: hidden; }
-    .blog-posts .post-snippet .post-snippet-title {
+  .blog-posts .post-container {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%; }
+    .blog-posts .post-container:last-child {
+      margin-right: 0; }
+    .blog-posts .post-container .post-snippet {
+      visibility: hidden;
       float: left;
       display: block;
-      margin-right: 4.82916%;
+      margin-right: 2.35765%;
       width: 100%; }
-      .blog-posts .post-snippet .post-snippet-title:last-child {
+      .blog-posts .post-container .post-snippet:last-child {
         margin-right: 0; }
-      .blog-posts .post-snippet .post-snippet-title span {
+      @media screen and (min-width: 768px) {
+        .blog-posts .post-container .post-snippet {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 31.76157%; }
+          .blog-posts .post-container .post-snippet:last-child {
+            margin-right: 0; } }
+      .blog-posts .post-container .post-snippet .post-snippet-title {
         float: left;
-        line-height: 36px;
-        font-size: 22px;
+        display: block;
+        margin-right: 4.82916%;
+        width: 100%; }
+        .blog-posts .post-container .post-snippet .post-snippet-title:last-child {
+          margin-right: 0; }
+        .blog-posts .post-container .post-snippet .post-snippet-title span {
+          float: left;
+          line-height: 36px;
+          font-size: 22px;
+          color: #4A4A4A;
+          margin-right: 15px; }
+        .blog-posts .post-container .post-snippet .post-snippet-title h3 {
+          font-size: 24px;
+          line-height: 36px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+      .blog-posts .post-container .post-snippet .post-snippet-body img {
+        float: left;
+        display: block;
+        margin-right: 4.82916%;
+        width: 30.11389%;
+        margin-top: 5px; }
+        .blog-posts .post-container .post-snippet .post-snippet-body img:last-child {
+          margin-right: 0; }
+      .blog-posts .post-container .post-snippet .post-snippet-body p {
+        float: left;
+        display: block;
+        margin-right: 4.82916%;
+        width: 65.05695%;
+        font-size: 16px;
+        line-height: 22px;
+        padding-right: 0px;
         color: #4A4A4A;
-        margin-right: 15px; }
-      .blog-posts .post-snippet .post-snippet-title h3 {
-        font-size: 24px;
-        line-height: 36px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; }
-    .blog-posts .post-snippet .post-snippet-body img {
-      float: left;
-      display: block;
-      margin-right: 4.82916%;
-      width: 21.37813%; }
-      .blog-posts .post-snippet .post-snippet-body img:last-child {
-        margin-right: 0; }
-    .blog-posts .post-snippet .post-snippet-body p {
-      float: left;
-      display: block;
-      margin-right: 4.82916%;
-      width: 73.79271%;
-      font-size: 16px;
-      line-height: 22px;
-      padding-right: 10px;
-      color: #4A4A4A; }
-      .blog-posts .post-snippet .post-snippet-body p:last-child {
-        margin-right: 0; }
-    .blog-posts .post-snippet .post-button {
-      float: left;
-      display: block;
-      margin-right: 4.82916%;
-      width: 100%; }
-      .blog-posts .post-snippet .post-button:last-child {
-        margin-right: 0; }
-      .blog-posts .post-snippet .post-button .button {
-        margin-right: 25px;
-        float: right;
-        margin-bottom: 40px; }
-        @media all and (max-width: 720px) {
-          .blog-posts .post-snippet .post-button .button {
-            margin-top: 15px; } }
-        .blog-posts .post-snippet .post-button .button a {
-          color: #fff; }
+        margin-top: 5px;
+        height: 150px; }
+        .blog-posts .post-container .post-snippet .post-snippet-body p:last-child {
+          margin-right: 0; }
+        @media screen and (min-width: 768px) {
+          .blog-posts .post-container .post-snippet .post-snippet-body p {
+            height: 190px; } }
+      .blog-posts .post-container .post-snippet .post-button {
+        float: left;
+        display: block;
+        margin-right: 4.82916%;
+        width: 100%;
+        margin-top: 10px; }
+        .blog-posts .post-container .post-snippet .post-button:last-child {
+          margin-right: 0; }
+        .blog-posts .post-container .post-snippet .post-button .button {
+          margin-right: 25px;
+          float: right;
+          margin-bottom: 40px; }
+          @media all and (max-width: 720px) {
+            .blog-posts .post-container .post-snippet .post-button .button {
+              margin-top: 15px; } }
+          .blog-posts .post-container .post-snippet .post-button .button a {
+            color: #fff; }
 
 #personal-data {
   height: 520px; }

@@ -1,1 +1,6 @@
 /scss/.sass-cache/
+/build/.DS_Store
+/build/.gitignore
+/build/.htaccess
+.DS_Store*
+config.codekit3

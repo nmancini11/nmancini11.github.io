@@ -1,5 +1,5 @@
-$parallax-window-height: 400px;
-$parallax-background-height: $parallax-window-height * 2;
+$parallax-window-height: 550px;
+$parallax-background-height: $parallax-window-height * 1.2;
 
 .parallax-window {
   max-height: $parallax-window-height;
@@ -18,7 +18,7 @@ $parallax-background-height: $parallax-window-height * 2;
 }
 
 .parallax-background {
-  background: url("/images/background-1080.gif") no-repeat;
+  background: url("/images/background-3.gif") no-repeat;
   background-position: top;
   background-size: cover;
   background-color: beige;
