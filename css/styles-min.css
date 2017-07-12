@@ -431,19 +431,26 @@ header.navigation {
           display: block; } }
 
 .banner {
-  height: 550px;
-  margin-top: -100px; }
+  height: 350px;
+  margin-top: 100px; }
   .banner .container {
     padding: 20px;
     max-width: 68em;
     margin-left: auto;
     margin-right: auto;
     background: none;
-    height: 550px; }
+    height: 350px; }
     .banner .container::after {
       clear: both;
       content: "";
       display: table; }
+    .banner .container img {
+      margin-top: 210px;
+      height: 40px;
+      float: right;
+      padding: 5px;
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, 0.2); }
 
 * {
   box-sizing: border-box; }
@@ -466,6 +473,10 @@ header.navigation {
   height: 100%;
   pointer-events: none; }
 
+.mobile-banner {
+  display: none;
+  height: 0; }
+
 @media (min-aspect-ratio: 16 / 9) {
   .video-foreground {
     height: 300%;
@@ -480,9 +491,18 @@ header.navigation {
   .video-background, .video-foreground, .expand {
     height: 0; }
   .banner {
-    height: 400px;
-    margin-top: -100px;
-    overflow: hidden; } }
+    height: 220px;
+    margin-top: 60px;
+    overflow: hidden; }
+    .banner .mobile-banner {
+      height: 200px;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%;
+      overflow: hidden; }
+      .banner .mobile-banner:last-child {
+        margin-right: 0; } }
 
 @media all and (max-width: 500px) {
   .vid-info .acronym {
@@ -712,7 +732,7 @@ text {
     margin-right: 0; }
 
 .parallax-window {
-  max-height: 550px;
+  max-height: 400px;
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -726,14 +746,14 @@ text {
   color: #fff; }
 
 .parallax-background {
-  background: url("/images/background-3.gif") no-repeat;
+  background: url("/images/background-1080.gif") no-repeat;
   background-position: top;
   background-size: cover;
   background-color: beige;
-  height: 660px;
+  height: 800px;
   left: 0;
   position: absolute;
-  top: -183.33333px;
+  top: -133.33333px;
   width: 100%; }
 
 svg path.line {
