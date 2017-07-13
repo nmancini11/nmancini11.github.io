@@ -5,16 +5,8 @@ d3.json('../data/sls-munich-finals-trick-data.json', function(error, json) {
     data = json;
 
     stanceDonutChart('stanceChart', json);
-    // consistencyChart('consistencyChart', json);
-    // runChart('runChart', json);
     console.log(json);
 });
-
-// d3.json('../data/sls-run-data.json', function(error, json) {
-//     if (error) return console.warn(error);
-//     data = json;
-//     drawRunChart('runChart', json);
-// });
 
 // donut chart / stance chart
 function stanceDonutChart(div, data) {

@@ -726,7 +726,7 @@ text {
   color: #fff; }
 
 .parallax-background {
-  background: url("/images/background-3.gif") no-repeat;
+  background: url("/images/background.gif") no-repeat;
   background-position: top;
   background-size: cover;
   background-color: beige;
